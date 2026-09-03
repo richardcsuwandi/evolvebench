@@ -1,8 +1,7 @@
 site_name: EvolveBench
 site_description: >-
-  An open benchmark and execution harness for evaluating AI-driven research and
-  optimization systems on real software-engineering and performance-optimization
-  tasks.
+  A benchmark and execution harness for evaluating AI-driven research and
+  optimization systems on real GitHub repositories.
 site_url: https://richardcsuwandi.github.io/evolvebench/
 repo_url: https://github.com/richardcsuwandi/evolvebench
 repo_name: richardcsuwandi/evolvebench

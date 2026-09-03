@@ -1,7 +1,7 @@
 # EvolveBench
 
-**An open benchmark and execution harness for evaluating AI-driven research and
-optimization systems on real software-engineering tasks.**
+**A benchmark and execution harness for evaluating AI-driven research and
+optimization systems on real GitHub repositories.**
 
 EvolveBench asks a simple question: can an agent improve a real program while
 preserving the behavior its users depend on? It targets systems like

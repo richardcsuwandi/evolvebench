@@ -1,6 +1,6 @@
 # EvolveBench
 
-EvolveBench is an open benchmark and execution harness for evaluating evolutionary coding agents on real software-engineering and performance-optimization tasks. It asks a simple question: can an agent improve a real program while preserving the behavior its users depend on?
+EvolveBench is a benchmark and execution harness for evaluating AI-driven research and optimization systems on real GitHub repositories. It asks a simple question: can an agent improve a real program while preserving the behavior its users depend on?
 
 The benchmark currently contains 11 tasks drawn from projects including CPython, pandas, SymPy, NetworkX, python-jsonschema, and python-chess. Each task packages an editable program, correctness oracle, performance harness, and configurations for comparing evaluator designs.
 

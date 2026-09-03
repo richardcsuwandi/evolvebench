@@ -33,7 +33,7 @@ def main(
         None, "--config", "-c", help="Path to config file"
     ),
 ):
-    """EvolveBench: Benchmark for Evolutionary Coding Agents"""
+    """EvolveBench: Benchmark and Execution Harness for AI-Driven Optimization"""
     pass
 
 

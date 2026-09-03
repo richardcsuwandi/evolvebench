@@ -1,7 +1,7 @@
 [project]
 name = "evolve-bench"
 version = "0.1.0"
-description = "Benchmark for evaluating automated evolutionary coding agents"
+description = "Benchmark and execution harness for evaluating AI-driven research and optimization systems on real GitHub repositories"
 readme = "README.md"
 authors = [
     { name = "Richard Cornelius Suwandi", email = "richardsuwandi@link.cuhk.edu.cn" },
