@@ -1,6 +1,11 @@
+<img src="docs/assets/logo.svg" alt="EvolveBench logo" width="88" align="left">
+
 # EvolveBench
 
 EvolveBench is a benchmark and execution harness for evaluating AI-driven research and optimization systems on real GitHub repositories. It asks a simple question: can an agent improve a real program while preserving the behavior its users depend on?
+
+<br clear="left">
+
 
 The benchmark draws tasks from real open-source projects, including CPython, pandas, SymPy, NetworkX, python-jsonschema, and python-chess — see [Included tasks](#included-tasks) below or the [full task list](https://richardcsuwandi.github.io/evolvebench/tasks/) for the current set. Each task packages an editable program, correctness oracle, performance harness, and configurations for comparing evaluator designs.
 

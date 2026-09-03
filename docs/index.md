@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.svg" alt="EvolveBench logo" width="120">
+</p>
+
 # EvolveBench
 
 **A benchmark and execution harness for evaluating AI-driven research and
