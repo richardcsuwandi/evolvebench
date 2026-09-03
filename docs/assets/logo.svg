@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
   <title id="title">EvolveBench</title>
-  <desc id="desc">A double helix with one highlighted base pair, standing in for evolutionary search and the benchmark that measures it.</desc>
+  <desc id="desc">A simplified double helix, standing for evolutionary search and the benchmark that measures it.</desc>
 
   <defs>
-    <linearGradient id="strandA" x1="64" y1="16" x2="64" y2="120" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0B2C63"/>
+    <linearGradient id="bg" x1="16" y1="8" x2="112" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E6BD6"/>
+      <stop offset="100%" stop-color="#0B2C63"/>
+    </linearGradient>
+    <linearGradient id="strandA" x1="44" y1="18" x2="84" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7FC8FF"/>
       <stop offset="100%" stop-color="#1E6BD6"/>
     </linearGradient>
-    <linearGradient id="strandB" x1="64" y1="16" x2="64" y2="120" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#4FA8FF"/>
-      <stop offset="100%" stop-color="#1E6BD6"/>
+    <linearGradient id="strandB" x1="84" y1="18" x2="44" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#0EA968"/>
     </linearGradient>
   </defs>
 
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <!-- rungs (base pairs) -->
-    <path d="M41,36 L87,36" stroke="#8FBFF5" stroke-width="6"/>
-    <path d="M41,100 L87,100" stroke="#8FBFF5" stroke-width="6"/>
-    <path d="M41,68 L87,68" stroke="#F6B93B" stroke-width="7"/>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#bg)"/>
 
-    <!-- strand A -->
-    <path d="M64,20 C40,20 40,52 64,52 C88,52 88,84 64,84 C40,84 40,116 64,116"
-          stroke="url(#strandA)" stroke-width="9"/>
-    <!-- strand B -->
-    <path d="M64,20 C88,20 88,52 64,52 C40,52 40,84 64,84 C88,84 88,116 64,116"
-          stroke="url(#strandB)" stroke-width="9"/>
+  <g fill="none" stroke-linecap="round">
+    <!-- two strands, one clean crossing -->
+    <path d="M44,18 C44,50 84,78 84,110" stroke="url(#strandA)" stroke-width="10"/>
+    <path d="M84,18 C84,50 44,78 44,110" stroke="url(#strandB)" stroke-width="10"/>
   </g>
 
-  <!-- highlighted base pair: the mutation the benchmark selected -->
-  <circle cx="41" cy="68" r="5" fill="#F6B93B" stroke="#ffffff" stroke-width="2"/>
-  <circle cx="87" cy="68" r="5" fill="#F6B93B" stroke="#ffffff" stroke-width="2"/>
+  <!-- base pairs -->
+  <path d="M50,32 L78,32" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+  <path d="M44,64 L84,64" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+  <path d="M50,96 L78,96" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
 </svg>
