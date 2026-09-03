@@ -32,5 +32,5 @@ eb run --task pymoo --evaluator handwritten --iteration 40
 
 This task vendors source code from `pymoo`, licensed under the Apache License 2.0.
 The upstream license text is included at `pymoo/LICENSE`. EvolveBench's own harness
-and task code are licensed separately under the same Apache 2.0 terms — see the
+and task code are licensed separately under the same Apache 2.0 terms. See the
 repository root [LICENSE](../../LICENSE).

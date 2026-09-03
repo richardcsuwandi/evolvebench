@@ -5,7 +5,7 @@
 This task optimizes the random-sampling step of the acquisition function in
 [`bayesian-optimization/BayesianOptimization`](https://github.com/bayesian-optimization/BayesianOptimization),
 a widely used Python library for Bayesian optimization. The optimization target is
-`optimization-acquisition-sampling` inside `bayes_opt/` — see `task.yaml` for the exact
+`optimization-acquisition-sampling` inside `bayes_opt/`. See `task.yaml` for the exact
 weighting between correctness and performance.
 
 ## Source
@@ -33,4 +33,4 @@ eb run --task BayesianOptimization --evaluator handwritten --iteration 30
 
 This task vendors source code from `BayesianOptimization`, licensed under the MIT
 License. The upstream license text is included at `bayes_opt/LICENSE`. EvolveBench's
-own harness and task code are licensed separately — see the repository root [LICENSE](../../LICENSE).
+own harness and task code are licensed separately. See the repository root [LICENSE](../../LICENSE).

@@ -173,4 +173,4 @@ This example shows OpenEvolve's potential for discovering meaningful optimizatio
 This task is based on code from CPython's `difflib` module, which is distributed
 under the Python Software Foundation License. The upstream license text is included
 at `LICENSE` in this task directory. EvolveBench's own harness and task code are
-licensed separately — see the repository root [LICENSE](../../LICENSE).
+licensed separately. See the repository root [LICENSE](../../LICENSE).

@@ -197,5 +197,5 @@ This task demonstrates that OpenEvolve can:
 
 This task is based on code from pandas (`rolling().rank()`), which is licensed under
 the BSD 3-Clause License. The upstream license text is included at `LICENSE` in this
-task directory. EvolveBench's own harness and task code are licensed separately — see
+task directory. EvolveBench's own harness and task code are licensed separately. See
 the repository root [LICENSE](../../LICENSE).

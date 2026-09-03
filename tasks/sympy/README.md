@@ -263,7 +263,7 @@ This optimization could be contributed to SymPy:
 
 This task is based on code from SymPy, which is licensed under the BSD 3-Clause
 License. The upstream license text is included at `LICENSE` in this task directory.
-EvolveBench's own harness and task code are licensed separately — see the repository
+EvolveBench's own harness and task code are licensed separately. See the repository
 root [LICENSE](../../LICENSE).
 
 ## Task Metadata

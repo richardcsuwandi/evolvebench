@@ -234,5 +234,5 @@ If LMCache's work helped your research, cite their paper:
 
 This optimization case study is based on LMCache (Apache 2.0 License). The upstream
 license text is included at `LICENSE` in this task directory. EvolveBench's own
-harness and task code are licensed separately under the same Apache 2.0 terms — see
+harness and task code are licensed separately under the same Apache 2.0 terms. See
 the repository root [LICENSE](../../LICENSE).

@@ -5,7 +5,7 @@
 This task optimizes nested loops in the `parse_source` method of
 [`frostming/marko`](https://github.com/frostming/marko), a CommonMark-compliant
 Markdown parser. The optimization target is `performance-nested-loops-parse-source`
-inside `marko/` — see `task.yaml` for the exact weighting between correctness and
+inside `marko/`. See `task.yaml` for the exact weighting between correctness and
 performance.
 
 ## Source
@@ -33,4 +33,4 @@ eb run --task marko --evaluator handwritten --iteration 20
 
 This task vendors source code from `marko`, licensed under the MIT License. The
 upstream license text is included at `marko/LICENSE`. EvolveBench's own harness and
-task code are licensed separately — see the repository root [LICENSE](../../LICENSE).
+task code are licensed separately. See the repository root [LICENSE](../../LICENSE).

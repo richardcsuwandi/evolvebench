@@ -243,5 +243,5 @@ The multi-file approach enables coordinated optimizations across the entire path
 
 This task is based on code from python-pathfinding, which is licensed under the MIT
 License. The upstream license text is included at `LICENSE` in this task directory.
-EvolveBench's own harness and task code are licensed separately — see the repository
+EvolveBench's own harness and task code are licensed separately. See the repository
 root [LICENSE](../../LICENSE).

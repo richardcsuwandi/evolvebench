@@ -1,7 +1,7 @@
 site_name: EvolveBench
 site_description: >-
-  A benchmark and execution harness for evaluating AI-driven research and
-  optimization systems on real GitHub repositories.
+  A benchmark and execution harness for evaluating AI-driven algorithm
+  discovery and codebase optimization systems on real GitHub repositories.
 site_url: https://richardcsuwandi.github.io/evolvebench/
 repo_url: https://github.com/richardcsuwandi/evolvebench
 repo_name: richardcsuwandi/evolvebench
@@ -37,10 +37,14 @@ theme:
 
 markdown_extensions:
   - tables
+  - attr_list
   - admonition
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
       permalink: true
 

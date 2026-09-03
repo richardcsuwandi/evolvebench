@@ -4,7 +4,7 @@
 
 This task optimizes chess move-generation/evaluation code in
 [`niklasf/python-chess`](https://github.com/niklasf/python-chess). The optimization
-target is `chess-engine-optimization` inside `chess/` — see `task.yaml` for the exact
+target is `chess-engine-optimization` inside `chess/`. See `task.yaml` for the exact
 weighting between correctness and performance.
 
 ## Source
@@ -38,4 +38,4 @@ eb run --task python-chess --evaluator handwritten --iteration 30
 
 This task vendors source code from `python-chess`, licensed under GPL-3.0-or-later.
 The upstream license text is included at `chess/LICENSE`. EvolveBench's own harness
-and task code are licensed separately — see the repository root [LICENSE](../../LICENSE).
+and task code are licensed separately. See the repository root [LICENSE](../../LICENSE).

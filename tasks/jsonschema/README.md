@@ -338,4 +338,4 @@ The evaluator creates SBOM-like nested structures:
 
 This optimization case study is based on python-jsonschema (MIT License). The
 upstream license text is included at `LICENSE` in this task directory. EvolveBench's
-own harness and task code are licensed separately — see the repository root [LICENSE](../../LICENSE).
+own harness and task code are licensed separately. See the repository root [LICENSE](../../LICENSE).

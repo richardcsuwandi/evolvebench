@@ -2,7 +2,7 @@
 
 EvolveBench's harness, CLI, scripts, and task definitions
 (`evolve_bench/`, `scripts/`, `templates/`, `task_schema.yaml`, `registry.json`) are
-licensed under the Apache License 2.0 — see [LICENSE](LICENSE).
+licensed under the Apache License 2.0. See [LICENSE](LICENSE).
 
 Each task under `tasks/<name>/` vendors source code from the upstream project it
 benchmarks, under that project's own license. The exact upstream license text is
@@ -28,5 +28,5 @@ summarizes the source, license, and vendored path for each task:
 independently of the Apache-2.0 license covering the rest of this repository.
 
 New task contributions must include the upstream project's license file in the
-vendored source directory and document it in this table — see
+vendored source directory and document it in this table. See
 [CONTRIBUTING.md](CONTRIBUTING.md).

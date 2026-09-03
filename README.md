@@ -2,12 +2,12 @@
 
 # EvolveBench
 
-EvolveBench is a benchmark and execution harness for evaluating AI-driven research and optimization systems on real GitHub repositories. It asks a simple question: can an agent improve a real program while preserving the behavior its users depend on?
+EvolveBench is a benchmark and execution harness for evaluating AI-driven research and optimization systems on real GitHub repositories. Where SWE-bench-style benchmarks ask an agent to patch a described bug, EvolveBench targets algorithm discovery and codebase optimization: given a real function inside a real, actively maintained repository, can the system find a genuinely better algorithm or implementation, not just a faster constant factor, while preserving the correctness guarantees the codebase already depends on? It targets systems that search and iterate rather than emit a single patch, such as [OpenEvolve](https://github.com/algorithmicsuperintelligence/openevolve), [ShinkaEvolve](https://github.com/SakanaAI/ShinkaEvolve), and [AlphaEvolve](https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/)-style agents.
 
 <br clear="left">
 
 
-The benchmark draws tasks from real open-source projects, including CPython, pandas, SymPy, NetworkX, python-jsonschema, and python-chess — see [Included tasks](#included-tasks) below or the [full task list](https://richardcsuwandi.github.io/evolvebench/tasks/) for the current set. Each task packages an editable program, correctness oracle, performance harness, and configurations for comparing evaluator designs.
+The benchmark draws tasks from real open-source projects, including CPython, pandas, SymPy, NetworkX, python-jsonschema, and python-chess. See [Included tasks](#included-tasks) below or the [full task list](https://richardcsuwandi.github.io/evolvebench/tasks/) for the current set. Each task packages an editable program, correctness oracle, performance harness, and configurations for comparing evaluator designs.
 
 [Project write-up](https://richardcsuwandi.github.io/projects/evolvebench/)
 
@@ -57,9 +57,9 @@ eb summarize
 
 EvolveBench treats the evaluator as part of the system being studied. Tasks can be run with three evaluator approaches:
 
-- **Handwritten** — a task-specific evaluator designed through source inspection.
-- **LLM-generated** — an evaluator synthesized from the task definition and baseline program.
-- **LLM judge** — a model-based evaluator for objectives that resist a fixed metric.
+- **Handwritten**: a task-specific evaluator designed through source inspection.
+- **LLM-generated**: an evaluator synthesized from the task definition and baseline program.
+- **LLM judge**: a model-based evaluator for objectives that resist a fixed metric.
 
 Evaluators check correctness before rewarding performance. The benchmark covers algorithmic complexity, parser loops, cache policies, numerical routines, graph algorithms, and library-specific regressions.
 
@@ -146,4 +146,4 @@ For proposals or questions, open a GitHub issue so the design can be discussed b
 
 EvolveBench's harness and task code are licensed under the [Apache License 2.0](LICENSE).
 Each task vendors source from the upstream project it benchmarks, under that
-project's own license — see [NOTICE.md](NOTICE.md) for the full attribution table.
+project's own license. See [NOTICE.md](NOTICE.md) for the full attribution table.

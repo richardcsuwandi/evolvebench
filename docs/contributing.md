@@ -4,8 +4,8 @@ EvolveBench welcomes new benchmark tasks, evaluator improvements, integrations w
 other AI-driven optimization systems, reproducibility tooling, and documentation
 fixes.
 
-The full, canonical guide — expected task structure, validation steps, and the
-pull-request checklist — lives in
+The full, canonical guide (expected task structure, validation steps, and the
+pull-request checklist) lives in
 [CONTRIBUTING.md](https://github.com/richardcsuwandi/evolvebench/blob/main/CONTRIBUTING.md)
 in the repository root, so it stays a single source of truth alongside the code it
 describes.

@@ -4,12 +4,12 @@
 
 This task optimizes `_single_source_shortest_path_basic`, a BFS helper used by
 betweenness centrality in [`networkx/networkx`](https://github.com/networkx/networkx).
-The optimization target is `graph-algorithm-optimization` inside `networkx/` — see
+The optimization target is `graph-algorithm-optimization` inside `networkx/`. See
 `task.yaml` for the exact weighting between correctness and performance.
 
 Only the library source is vendored; the upstream `networkx/tests/` tree (and the
 per-module `tests/` directories nested throughout the package) was removed since the
-evaluator and benchmark do not depend on it — see `evaluator.py` and `benchmark.py`.
+evaluator and benchmark do not depend on it. See `evaluator.py` and `benchmark.py`.
 
 ## Source
 
@@ -35,4 +35,4 @@ eb run --task networkx --evaluator handwritten --iteration 25
 
 This task vendors source code from `networkx`, licensed under the BSD 3-Clause
 License. The upstream license text is included at `networkx/LICENSE`. EvolveBench's
-own harness and task code are licensed separately — see the repository root [LICENSE](../../LICENSE).
+own harness and task code are licensed separately. See the repository root [LICENSE](../../LICENSE).

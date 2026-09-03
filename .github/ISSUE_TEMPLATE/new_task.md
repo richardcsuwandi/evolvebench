@@ -23,7 +23,7 @@ held-out inputs will the oracle cover? -->
 
 ## Expected runtime and evaluator approach
 
-<!-- Handwritten / LLM-generated / LLM-judge — which apply, and roughly how long a
+<!-- Handwritten / LLM-generated / LLM-judge: which apply, and roughly how long a
 single evaluation takes -->
 
 ## Anything else reviewers should know
