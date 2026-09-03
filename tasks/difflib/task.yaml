@@ -3,6 +3,7 @@ description: "Optimize Python difflib Differ._fancy_replace WINDOW-based search 
 repository: "https://github.com/python/cpython/tree/main/Lib/difflib.py"
 optimization_target: "performance-fancy-replace"
 source_directory: "."
+evolve_source: "difflib.py"
 
 # Evaluation configuration
 evaluation_criteria:

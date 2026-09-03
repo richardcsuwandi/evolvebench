@@ -3,6 +3,7 @@ description: "Optimize pathfinding algorithms for improved performance"
 repository: "https://github.com/brean/python-pathfinding"
 optimization_target: "heap-optimization"
 source_directory: "pathfinding"
+evolve_source: "pathfinding/core/heap.py"
 
 # Evaluation configuration
 evaluation_criteria:

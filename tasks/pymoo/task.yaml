@@ -3,6 +3,7 @@ description: "Optimize non-dominated sorting in pymoo to improve performance (es
 repository: "https://github.com/anyoptimization/pymoo"
 optimization_target: "performance-non-dominated-sorting"
 source_directory: "pymoo"
+evolve_source: "pymoo/functions/standard/non_dominated_sorting.py"
 source_file: "pymoo/functions/standard/non_dominated_sorting.py"
 
 # Evaluation configuration

@@ -3,6 +3,7 @@ description: "Optimize python-jsonschema equality checking functions (_mapping_e
 repository: "https://github.com/python-jsonschema/jsonschema"
 optimization_target: "equality-checking-performance"
 source_directory: "."
+evolve_source: "jsonschema.py"
 
 # Evaluation configuration
 evaluation_criteria:

@@ -3,6 +3,7 @@ description: "Optimize graph algorithms in NetworkX for improved performance"
 repository: "https://github.com/networkx/networkx"
 optimization_target: "graph-algorithm-optimization"
 source_directory: "networkx"
+evolve_source: "networkx/algorithms/centrality/betweenness.py"
 
 # Evaluation configuration
 evaluation_criteria:

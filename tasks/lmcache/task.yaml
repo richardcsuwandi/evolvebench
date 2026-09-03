@@ -3,6 +3,7 @@ description: "Optimize LMCache LFU cache policy from O(log N) to O(1) by trackin
 repository: "https://github.com/LMCache/LMCache"
 optimization_target: "lfu-cache-complexity"
 source_directory: "."
+evolve_source: "lmcache.py"
 
 # Evaluation configuration
 evaluation_criteria:

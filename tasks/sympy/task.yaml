@@ -3,6 +3,7 @@ description: "Optimize SymPy Min/Max _find_localzeros algorithm from O(n²) to O
 repository: "https://github.com/sympy/sympy"
 optimization_target: "performance-min-max-localzeros"
 source_directory: "sympy/functions/elementary"
+evolve_source: "sympy_implementation.py"
 
 # Evaluation configuration
 evaluation_criteria:

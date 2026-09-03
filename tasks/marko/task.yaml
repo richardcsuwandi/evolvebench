@@ -3,6 +3,7 @@ description: "Optimize nested loops in marko parser's parse_source method for im
 repository: "https://github.com/frostming/marko"
 optimization_target: "performance-nested-loops-parse-source"
 source_directory: "marko"
+evolve_source: "marko/source.py"
 
 # Evaluation configuration
 evaluation_criteria:

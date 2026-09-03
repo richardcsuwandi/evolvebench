@@ -3,6 +3,7 @@ description: "Optimize acquisition function random sampling in Bayesian optimiza
 repository: "https://github.com/fmfn/BayesianOptimization"
 optimization_target: "optimization-acquisition-sampling"
 source_directory: "bayes_opt"
+evolve_source: "bayes_opt/acquisition.py"
 
 # Evaluation configuration
 evaluation_criteria:

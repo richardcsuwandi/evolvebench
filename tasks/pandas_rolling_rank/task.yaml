@@ -3,6 +3,7 @@ description: "Optimize pandas rolling_rank from O(n log w) C skiplist to O(n·w)
 repository: "https://github.com/pandas-dev/pandas"
 optimization_target: "rolling-rank-small-windows"
 source_directory: "."
+evolve_source: "pandas_rolling_rank.py"
 
 # Evaluation configuration
 evaluation_criteria:

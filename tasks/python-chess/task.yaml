@@ -3,6 +3,7 @@ description: "Optimize chess engine algorithms for improved performance"
 repository: "https://github.com/niklasf/python-chess"
 optimization_target: "chess-engine-optimization"
 source_directory: "chess"
+evolve_source: "chess/__init__.py"
 
 # Evaluation configuration
 evaluation_criteria:
