@@ -1,0 +1,1703 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A benchmark and execution harness for evaluating AI-driven algorithm discovery and codebase optimization systems on real GitHub repositories.">
+      
+      
+      
+        <link rel="canonical" href="https://richardcsuwandi.github.io/evolvebench/tasks/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../leaderboard/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Tasks - EvolveBench</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tasks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="EvolveBench" class="md-header__button md-logo" aria-label="EvolveBench" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EvolveBench
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tasks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/richardcsuwandi/evolvebench" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    richardcsuwandi/evolvebench
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="EvolveBench" class="md-nav__button md-logo" aria-label="EvolveBench" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    EvolveBench
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/richardcsuwandi/evolvebench" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    richardcsuwandi/evolvebench
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bayesianoptimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BayesianOptimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#difflib" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        difflib
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jsonschema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        jsonschema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lmcache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lmcache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#marko" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        marko
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networkx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        networkx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pandas_rolling_rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pandas_rolling_rank
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pymoo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pymoo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-chess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        python-chess
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-pathfinding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        python-pathfinding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sympy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sympy
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../leaderboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leaderboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bayesianoptimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BayesianOptimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#difflib" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        difflib
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jsonschema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        jsonschema
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lmcache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        lmcache
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#marko" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        marko
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#networkx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        networkx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pandas_rolling_rank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pandas_rolling_rank
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pymoo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pymoo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-chess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        python-chess
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-pathfinding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        python-pathfinding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sympy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sympy
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/richardcsuwandi/evolvebench/edit/main/docs/tasks.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="tasks">Tasks<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h1>
+<p>EvolveBench draws tasks from real open-source projects. Each task packages an editable program, a correctness oracle, a performance harness, and configurations for comparing evaluator designs. Every task below shows the actual initial code inside its <code>EVOLVE-BLOCK</code>, the exact region a system is allowed to change.</p>
+<p>Want to add one? See <a href="../contributing/">Contributing</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Category</th>
+<th>Evaluation weights</th>
+<th>Tags</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#bayesianoptimization"><code>BayesianOptimization</code></a></td>
+<td>algorithm-optimization</td>
+<td>correctness: 0.4, performance: 0.6</td>
+<td>bayesian-optimization, acquisition-function, performance, vectorization</td>
+</tr>
+<tr>
+<td><a href="#difflib"><code>difflib</code></a></td>
+<td>performance-optimization</td>
+<td>correctness: 0.5, performance: 0.5</td>
+<td>difflib, recursion, algorithm, performance</td>
+</tr>
+<tr>
+<td><a href="#jsonschema"><code>jsonschema</code></a></td>
+<td>performance-optimization</td>
+<td>correctness: 0.7, performance: 0.3</td>
+<td>jsonschema, equality-checking, type-dispatch, python-312-regression, validation, recursive-algorithms</td>
+</tr>
+<tr>
+<td><a href="#lmcache"><code>lmcache</code></a></td>
+<td>performance-optimization</td>
+<td>correctness: 0.5, performance: 0.5</td>
+<td>lmcache, cache, lfu, llm-serving, complexity-reduction, sigcomm-2024</td>
+</tr>
+<tr>
+<td><a href="#marko"><code>marko</code></a></td>
+<td>performance-optimization</td>
+<td>correctness: 0.5, performance: 0.5</td>
+<td>markdown, parser, performance, nested-loops</td>
+</tr>
+<tr>
+<td><a href="#networkx"><code>networkx</code></a></td>
+<td>algorithm-optimization</td>
+<td>correctness: 0.5, performance: 0.5</td>
+<td>graph, network, algorithm, performance</td>
+</tr>
+<tr>
+<td><a href="#pandas_rolling_rank"><code>pandas_rolling_rank</code></a></td>
+<td>performance-optimization</td>
+<td>correctness: 0.7, performance: 0.3</td>
+<td>pandas, rolling-rank, jit-compilation, numba, constant-factors, counter-intuitive-optimization</td>
+</tr>
+<tr>
+<td><a href="#pymoo"><code>pymoo</code></a></td>
+<td>algorithm-optimization</td>
+<td>correctness: 0.6, performance: 0.4</td>
+<td>pymoo, multi-objective, non-dominated-sorting, performance</td>
+</tr>
+<tr>
+<td><a href="#python-chess"><code>python-chess</code></a></td>
+<td>performance-optimization</td>
+<td>correctness: 0.6, performance: 0.4</td>
+<td>chess, game, algorithm, performance</td>
+</tr>
+<tr>
+<td><a href="#python-pathfinding"><code>python-pathfinding</code></a></td>
+<td>algorithm-optimization</td>
+<td>correctness: 0.5, performance: 0.5</td>
+<td>pathfinding, algorithm, performance, a-star</td>
+</tr>
+<tr>
+<td><a href="#sympy"><code>sympy</code></a></td>
+<td>performance-optimization</td>
+<td>correctness: 0.5, performance: 0.5</td>
+<td>sympy, algorithm, complexity-reduction, partial-ordering, performance</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bayesianoptimization"><code>BayesianOptimization</code><a class="headerlink" href="#bayesianoptimization" title="Permanent link">&para;</a></h3>
+<p>Optimize acquisition function random sampling in Bayesian optimization for improved performance</p>
+<p><strong>Category:</strong> algorithm-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.4, performance: 0.6 &nbsp;·&nbsp; <strong>Tags:</strong> bayesian-optimization, acquisition-function, performance, vectorization</p>
+<details class="example">
+<summary>View initial code (<code>bayes_opt/acquisition.py</code>)</summary>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">_random_sample_minimize</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">acq</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">Float</span><span class="p">]],</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">Float</span><span class="p">]],</span>
+        <span class="n">space</span><span class="p">:</span> <span class="n">TargetSpace</span><span class="p">,</span>
+        <span class="n">random_state</span><span class="p">:</span> <span class="n">RandomState</span><span class="p">,</span>
+        <span class="n">n_random</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">n_x_seeds</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">NDArray</span><span class="p">[</span><span class="n">Float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">Float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">"""Random search to find the minimum of `acq` function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        acq : Callable</span>
+<span class="sd">            Acquisition function to use. Should accept an array of parameters `x`.</span>
+
+<span class="sd">        space : TargetSpace</span>
+<span class="sd">            The target space over which to optimize.</span>
+
+<span class="sd">        random_state : RandomState</span>
+<span class="sd">            Random state to use for the optimization.</span>
+
+<span class="sd">        n_random : int</span>
+<span class="sd">            Number of random samples to use.</span>
+
+<span class="sd">        n_x_seeds : int</span>
+<span class="sd">            Number of top points to return, for use as starting points for L-BFGS-B.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        x_min : np.ndarray</span>
+<span class="sd">            Random sample minimizing the acquisition function.</span>
+
+<span class="sd">        min_acq : float</span>
+<span class="sd">            Acquisition function value at `x_min`</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">n_random</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">space</span><span class="o">.</span><span class="n">random_sample</span><span class="p">(</span><span class="n">n_x_seeds</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="n">x_tries</span> <span class="o">=</span> <span class="n">space</span><span class="o">.</span><span class="n">random_sample</span><span class="p">(</span><span class="n">n_random</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="n">ys</span> <span class="o">=</span> <span class="n">acq</span><span class="p">(</span><span class="n">x_tries</span><span class="p">)</span>
+        <span class="n">x_min</span> <span class="o">=</span> <span class="n">x_tries</span><span class="p">[</span><span class="n">ys</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
+        <span class="n">min_acq</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">n_x_seeds</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">ys</span><span class="p">)[:</span><span class="n">n_x_seeds</span><span class="p">]</span>
+            <span class="n">x_seeds</span> <span class="o">=</span> <span class="n">x_tries</span><span class="p">[</span><span class="n">idxs</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_seeds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">min_acq</span><span class="p">,</span> <span class="n">x_seeds</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/fmfn/BayesianOptimization">Source repository</a></p>
+<hr />
+<h3 id="difflib"><code>difflib</code><a class="headerlink" href="#difflib" title="Permanent link">&para;</a></h3>
+<p>Optimize Python difflib Differ._fancy_replace WINDOW-based search to reduce redundant ratio() calls and improve performance while preserving correctness.</p>
+<p><strong>Category:</strong> performance-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.5, performance: 0.5 &nbsp;·&nbsp; <strong>Tags:</strong> difflib, recursion, algorithm, performance</p>
+<details class="example">
+<summary>View initial code (<code>difflib.py</code>)</summary>
+<div class="highlight"><pre><span></span><code>        <span class="c1"># Target: Optimize Differ._fancy_replace WINDOW-based search algorithm</span>
+        <span class="c1"># Baseline: Overall score 0.365, RECURSION ERRORS at 500+ similar lines</span>
+        <span class="c1"># Pathological case #119105: Size 100: 0.059s, Size 500: 7.015s (recursion error)</span>
+        <span class="c1">#</span>
+        <span class="c1"># Current algorithm (lines 912-984 in original difflib.py):</span>
+        <span class="c1"># - Uses WINDOW=10 for searching corresponding line ranges</span>
+        <span class="c1"># - For each line in b, searches within WINDOW in a</span>
+        <span class="c1"># - Performs THREE ratio computations per comparison (real_quick_ratio, quick_ratio, ratio)</span>
+        <span class="c1"># - Overall complexity: O(N*WINDOW*ratio_cost)</span>
+        <span class="c1">#</span>
+        <span class="c1"># Known bottlenecks:</span>
+        <span class="c1"># - Nested loops (for j ... for i in arange) with expensive computations</span>
+        <span class="c1"># - SequenceMatcher ratio computations called repeatedly</span>
+        <span class="c1"># - No early termination heuristics</span>
+        <span class="c1"># - WINDOW size is fixed, not adaptive</span>
+        <span class="c1"># - Character-level sequence matching (lines 960-975) is expensive</span>
+        <span class="c1">#</span>
+        <span class="c1"># Optimization ideas:</span>
+        <span class="c1"># - Adaptive WINDOW sizing based on input characteristics</span>
+        <span class="c1"># - Caching of ratio computations</span>
+        <span class="c1"># - Better early exit conditions</span>
+        <span class="c1"># - Parallel ratio computations</span>
+        <span class="c1"># - Alternative matching algorithms (e.g., hash-based)</span>
+        <span class="c1"># - Limit character-level matching to truly similar lines</span>
+        <span class="c1"># - Use cheaper similarity metrics for initial filtering</span>
+        <span class="n">cutoff</span> <span class="o">=</span> <span class="mf">0.74999</span>
+        <span class="n">cruncher</span> <span class="o">=</span> <span class="n">SequenceMatcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">charjunk</span><span class="p">)</span>
+        <span class="n">crqr</span> <span class="o">=</span> <span class="n">cruncher</span><span class="o">.</span><span class="n">real_quick_ratio</span>
+        <span class="n">cqr</span> <span class="o">=</span> <span class="n">cruncher</span><span class="o">.</span><span class="n">quick_ratio</span>
+        <span class="n">cr</span> <span class="o">=</span> <span class="n">cruncher</span><span class="o">.</span><span class="n">ratio</span>
+
+        <span class="n">WINDOW</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">best_i</span> <span class="o">=</span> <span class="n">best_j</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">dump_i</span><span class="p">,</span> <span class="n">dump_j</span> <span class="o">=</span> <span class="n">alo</span><span class="p">,</span> <span class="n">blo</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">blo</span><span class="p">,</span> <span class="n">bhi</span><span class="p">):</span>
+            <span class="n">cruncher</span><span class="o">.</span><span class="n">set_seq2</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">aequiv</span> <span class="o">=</span> <span class="n">alo</span> <span class="o">+</span> <span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="n">blo</span><span class="p">)</span>
+            <span class="n">arange</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">aequiv</span> <span class="o">-</span> <span class="n">WINDOW</span><span class="p">,</span> <span class="n">dump_i</span><span class="p">),</span>
+                           <span class="nb">min</span><span class="p">(</span><span class="n">aequiv</span> <span class="o">+</span> <span class="n">WINDOW</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ahi</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">arange</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">best_ratio</span> <span class="o">=</span> <span class="n">cutoff</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arange</span><span class="p">:</span>
+                <span class="n">cruncher</span><span class="o">.</span><span class="n">set_seq1</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">crqr</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">best_ratio</span>
+                      <span class="ow">and</span> <span class="n">cqr</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">best_ratio</span>
+                      <span class="ow">and</span> <span class="n">cr</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">best_ratio</span><span class="p">):</span>
+                    <span class="n">best_i</span><span class="p">,</span> <span class="n">best_j</span><span class="p">,</span> <span class="n">best_ratio</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">cr</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">best_i</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fancy_helper</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dump_i</span><span class="p">,</span> <span class="n">best_i</span><span class="p">,</span>
+                                          <span class="n">b</span><span class="p">,</span> <span class="n">dump_j</span><span class="p">,</span> <span class="n">best_j</span><span class="p">)</span>
+            <span class="n">aelt</span><span class="p">,</span> <span class="n">belt</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">best_i</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">best_j</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">aelt</span> <span class="o">!=</span> <span class="n">belt</span><span class="p">:</span>
+                <span class="n">atags</span> <span class="o">=</span> <span class="n">btags</span> <span class="o">=</span> <span class="s2">""</span>
+                <span class="n">cruncher</span><span class="o">.</span><span class="n">set_seqs</span><span class="p">(</span><span class="n">aelt</span><span class="p">,</span> <span class="n">belt</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">tag</span><span class="p">,</span> <span class="n">ai1</span><span class="p">,</span> <span class="n">ai2</span><span class="p">,</span> <span class="n">bj1</span><span class="p">,</span> <span class="n">bj2</span> <span class="ow">in</span> <span class="n">cruncher</span><span class="o">.</span><span class="n">get_opcodes</span><span class="p">():</span>
+                    <span class="n">la</span><span class="p">,</span> <span class="n">lb</span> <span class="o">=</span> <span class="n">ai2</span> <span class="o">-</span> <span class="n">ai1</span><span class="p">,</span> <span class="n">bj2</span> <span class="o">-</span> <span class="n">bj1</span>
+                    <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">'replace'</span><span class="p">:</span>
+                        <span class="n">atags</span> <span class="o">+=</span> <span class="s1">'^'</span> <span class="o">*</span> <span class="n">la</span>
+                        <span class="n">btags</span> <span class="o">+=</span> <span class="s1">'^'</span> <span class="o">*</span> <span class="n">lb</span>
+                    <span class="k">elif</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">'delete'</span><span class="p">:</span>
+                        <span class="n">atags</span> <span class="o">+=</span> <span class="s1">'-'</span> <span class="o">*</span> <span class="n">la</span>
+                    <span class="k">elif</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">'insert'</span><span class="p">:</span>
+                        <span class="n">btags</span> <span class="o">+=</span> <span class="s1">'+'</span> <span class="o">*</span> <span class="n">lb</span>
+                    <span class="k">elif</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">'equal'</span><span class="p">:</span>
+                        <span class="n">atags</span> <span class="o">+=</span> <span class="s1">' '</span> <span class="o">*</span> <span class="n">la</span>
+                        <span class="n">btags</span> <span class="o">+=</span> <span class="s1">' '</span> <span class="o">*</span> <span class="n">lb</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'unknown tag </span><span class="si">%r</span><span class="s1">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">tag</span><span class="p">,))</span>
+                <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qformat</span><span class="p">(</span><span class="n">aelt</span><span class="p">,</span> <span class="n">belt</span><span class="p">,</span> <span class="n">atags</span><span class="p">,</span> <span class="n">btags</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="s1">'  '</span> <span class="o">+</span> <span class="n">aelt</span>
+            <span class="n">dump_i</span><span class="p">,</span> <span class="n">dump_j</span> <span class="o">=</span> <span class="n">best_i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">best_j</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">best_i</span> <span class="o">=</span> <span class="n">best_j</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fancy_helper</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dump_i</span><span class="p">,</span> <span class="n">ahi</span><span class="p">,</span>
+                                      <span class="n">b</span><span class="p">,</span> <span class="n">dump_j</span><span class="p">,</span> <span class="n">bhi</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/python/cpython/tree/main/Lib/difflib.py">Source repository</a></p>
+<hr />
+<h3 id="jsonschema"><code>jsonschema</code><a class="headerlink" href="#jsonschema" title="Permanent link">&para;</a></h3>
+<p>Optimize python-jsonschema equality checking functions (_mapping_equal, _sequence_equal, equal) to address Python 3.12 performance regression by reducing isinstance overhead and improving type-aware dispatch</p>
+<p><strong>Category:</strong> performance-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.7, performance: 0.3 &nbsp;·&nbsp; <strong>Tags:</strong> jsonschema, equality-checking, type-dispatch, python-312-regression, validation, recursive-algorithms</p>
+<details class="example">
+<summary>View initial code (<code>jsonschema.py</code>)</summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_mapping_equal</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Check if two mappings are equal using the semantics of `equal`.</span>
+
+<span class="sd">    This is the PRIMARY BOTTLENECK identified in profiling:</span>
+<span class="sd">    - 32.6% of total execution time</span>
+<span class="sd">    - O(n * m) where n is number of keys, m is average value complexity</span>
+<span class="sd">    - No caching or memoization of results</span>
+<span class="sd">    - Recursive calls for nested structures multiply the cost</span>
+
+<span class="sd">    BASELINE PERFORMANCE:</span>
+<span class="sd">    - Python 3.10: 27.8s cumulative time (56.4M calls)</span>
+<span class="sd">    - Python 3.12: 37.2s cumulative time (56.4M calls)</span>
+<span class="sd">    - 33% regression in Python 3.12</span>
+
+<span class="sd">    OPPORTUNITY:</span>
+<span class="sd">    This function has significant room for optimization through:</span>
+<span class="sd">    - Caching comparison results</span>
+<span class="sd">    - Hash-based quick rejection</span>
+<span class="sd">    - Structural comparison before value comparison</span>
+<span class="sd">    - Type-aware early termination</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">one</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">two</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span>
+        <span class="n">key</span> <span class="ow">in</span> <span class="n">two</span> <span class="ow">and</span> <span class="n">equal</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">two</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">one</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_sequence_equal</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Check if two sequences are equal using the semantics of `equal`.</span>
+
+<span class="sd">    Part of the recursive equality checking system.</span>
+<span class="sd">    Also shows up in profiling but less critical than _mapping_equal.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">one</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">two</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">equal</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">equal</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Check if two things are equal evading some Python type hierarchy semantics.</span>
+
+<span class="sd">    Specifically in JSON Schema, evade `bool` inheriting from `int`,</span>
+<span class="sd">    recursing into sequences to do the same.</span>
+
+<span class="sd">    This is the main entry point for equality checking and dispatches to</span>
+<span class="sd">    specialized functions based on type. The isinstance() checks themselves</span>
+<span class="sd">    show up as bottlenecks in Python 3.12 profiling.</span>
+
+<span class="sd">    PROFILING DATA:</span>
+<span class="sd">    - Total cumulative time: 33.2s (Python 3.12) vs 28.4s (Python 3.10)</span>
+<span class="sd">    - isinstance() calls: 34.9s (Python 3.12) vs 23.1s (Python 3.10)</span>
+
+<span class="sd">    The cascading isinstance() checks are expensive when called millions of times.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">one</span> <span class="ow">is</span> <span class="n">two</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">two</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">one</span> <span class="o">==</span> <span class="n">two</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">two</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_sequence_equal</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">two</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">_mapping_equal</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">unbool</span><span class="p">(</span><span class="n">one</span><span class="p">)</span> <span class="o">==</span> <span class="n">unbool</span><span class="p">(</span><span class="n">two</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/python-jsonschema/jsonschema">Source repository</a></p>
+<hr />
+<h3 id="lmcache"><code>lmcache</code><a class="headerlink" href="#lmcache" title="Permanent link">&para;</a></h3>
+<p>Optimize LMCache LFU cache policy from O(log N) to O(1) by tracking minimum frequency instead of using SortedDict</p>
+<p><strong>Category:</strong> performance-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.5, performance: 0.5 &nbsp;·&nbsp; <strong>Tags:</strong> lmcache, cache, lfu, llm-serving, complexity-reduction, sigcomm-2024</p>
+<details class="example">
+<summary>View initial code (<code>lmcache.py</code>)</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LFUCachePolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    LFU cache policy implementation.</span>
+
+<span class="sd">    Current approach uses SortedDict which provides O(log N) operations.</span>
+<span class="sd">    The TODO in the original implementation suggests optimizing to O(1)</span>
+<span class="sd">    by tracking minimum frequency.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># SortedDict provides O(log N) operations for insertion, deletion, lookup</span>
+        <span class="c1"># freq → {key → None} mapping</span>
+        <span class="c1"># Using dict as a set (value is None)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">:</span> <span class="n">SortedDict</span> <span class="o">=</span> <span class="n">SortedDict</span><span class="p">()</span>
+
+        <span class="c1"># Track frequency for each key for quick lookup</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key_to_freq</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">CacheEngineKey</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_on_hit</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">CacheEngineKey</span><span class="p">,</span>
+        <span class="n">cache_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">CacheEngineKey</span><span class="p">,</span> <span class="n">CacheEntry</span><span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Update internal state when a cache entry is accessed (cache hit).</span>
+<span class="sd">        Increment the frequency of the accessed key.</span>
+<span class="sd">        """</span>
+        <span class="n">curr_freq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key_to_freq</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+        <span class="c1"># Remove from current frequency bucket</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="n">curr_freq</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="n">curr_freq</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">curr_freq</span><span class="p">)</span>
+
+        <span class="c1"># Add to next frequency bucket</span>
+        <span class="n">curr_freq</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key_to_freq</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">curr_freq</span>
+
+        <span class="k">if</span> <span class="n">curr_freq</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="n">curr_freq</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="n">curr_freq</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_on_put</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">CacheEngineKey</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Update internal state when a new cache entry is stored.</span>
+<span class="sd">        Initialize the frequency for the new key to 1.</span>
+<span class="sd">        """</span>
+        <span class="c1"># Initialize the frequency for the new key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key_to_freq</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="mi">1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_on_force_evict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">CacheEngineKey</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Update internal state when a cache entry is force evicted.</span>
+<span class="sd">        Remove all tracking for this key.</span>
+<span class="sd">        """</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key_to_freq</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">freq</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="n">freq</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="n">freq</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_evict_candidates</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">cache_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">CacheEngineKey</span><span class="p">,</span> <span class="n">CacheEntry</span><span class="p">],</span>
+        <span class="n">num_candidates</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">CacheEngineKey</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Get keys to evict based on LFU policy.</span>
+
+<span class="sd">        Evicts entries with lowest frequency first.</span>
+<span class="sd">        Within same frequency, uses FIFO (first inserted gets evicted first).</span>
+<span class="sd">        Respects can_evict flag on cache entries.</span>
+
+<span class="sd">        Note: We do best effort to get eviction candidates so the number</span>
+<span class="sd">        of returned keys might be smaller than num_candidates.</span>
+<span class="sd">        """</span>
+        <span class="n">evict_keys</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">evict_freqs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Iterate through frequencies from lowest to highest</span>
+        <span class="c1"># SortedDict maintains sorted order</span>
+        <span class="k">for</span> <span class="n">curr_min_freq</span><span class="p">,</span> <span class="n">fifo_keys</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">fifo_keys</span><span class="p">:</span>
+                <span class="c1"># Skip pinned entries</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">cache_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">can_evict</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">evict_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="n">evict_freqs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_min_freq</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">key_to_freq</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">evict_keys</span><span class="p">)</span> <span class="o">==</span> <span class="n">num_candidates</span><span class="p">:</span>
+                    <span class="k">break</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">evict_keys</span><span class="p">)</span> <span class="o">==</span> <span class="n">num_candidates</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="c1"># Clean up frequency buckets</span>
+        <span class="k">for</span> <span class="n">freq</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">evict_freqs</span><span class="p">,</span> <span class="n">evict_keys</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="n">freq</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="p">[</span><span class="n">freq</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">freq_to_keys</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">evict_keys</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/LMCache/LMCache">Source repository</a></p>
+<hr />
+<h3 id="marko"><code>marko</code><a class="headerlink" href="#marko" title="Permanent link">&para;</a></h3>
+<p>Optimize nested loops in marko parser's parse_source method for improved performance</p>
+<p><strong>Category:</strong> performance-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.5, performance: 0.5 &nbsp;·&nbsp; <strong>Tags:</strong> markdown, parser, performance, nested-loops</p>
+<details class="example">
+<summary>View initial code (<code>marko/source.py</code>)</summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\r\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Source</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Wrapper class on content to be parsed"""</span>
+
+    <span class="n">parser</span><span class="p">:</span> <span class="n">Parser</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="n">_preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_anchor</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BlockElement</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">:</span> <span class="n">Match</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#: Store temporary data during parsing.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">SimpleNamespace</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BlockElement</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Returns the current element state."""</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Need to push a state first."</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">root</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Document</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Returns the root element, which is at the bottom of self._states."""</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Need to push a state first."</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">Document</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">BlockElement</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Push a new state to the state stack."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BlockElement</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Pop the top most state."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="nd">@contextmanager</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">under_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">:</span> <span class="n">BlockElement</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Source</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""A context manager to enable a new state temporarily."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">push_state</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="bp">self</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pop_state</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">exhausted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Indicates whether the source reaches the end."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""The prefix of each line when parsing."""</span>
+        <span class="k">return</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">_prefix</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_expect_re</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regexp</span><span class="p">:</span> <span class="n">Pattern</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Match</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">regexp</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">regexp</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">regexp</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">regexp</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">match_prefix</span><span class="p">(</span><span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Check if the line starts with given prefix and</span>
+<span class="sd">        return the position of the end of prefix.</span>
+<span class="sd">        If the prefix is not matched, return -1.</span>
+<span class="sd">        """</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">expandtabs</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">expandtabs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="s2">" "</span> <span class="o">*</span> <span class="mi">99</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">pos</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">expandtabs</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="o">&gt;=</span> <span class="n">pos</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">i</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># pragma: no cover</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">expect_re</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regexp</span><span class="p">:</span> <span class="n">Pattern</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Match</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Test against the given regular expression and returns the match object.</span>
+<span class="sd">        :param regexp: the expression to be tested.</span>
+<span class="sd">        :returns: the match object.</span>
+<span class="sd">        """</span>
+        <span class="n">prefix_len</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">match_prefix</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">next_line</span><span class="p">(</span><span class="n">require_prefix</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">prefix_len</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_re</span><span class="p">(</span><span class="n">regexp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">+</span> <span class="n">prefix_len</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">match</span> <span class="o">=</span> <span class="n">match</span>
+            <span class="k">return</span> <span class="n">match</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">next_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">require_prefix</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">next_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">require_prefix</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">next_line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">require_prefix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return the next line in the source.</span>
+
+<span class="sd">        :param require_prefix:  if False, the whole line will be returned.</span>
+<span class="sd">            otherwise, return the line with prefix stripped or None if the prefix</span>
+<span class="sd">            is not matched.</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="n">require_prefix</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">expect_re</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?m)[^\n]*?$\n?"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expect_re</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(?m)[^\n]*$\n?"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">match</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">consume</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Consume the body of source. ``pos`` will move forward."""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_update_prefix</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">match</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">anchor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Pin the current parsing position."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_anchor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Reset the position to the last anchor."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_anchor</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_states</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">"_second_prefix"</span><span class="p">):</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">_prefix</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">_second_prefix</span>  <span class="c1"># type: ignore</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/frostming/marko">Source repository</a></p>
+<hr />
+<h3 id="networkx"><code>networkx</code><a class="headerlink" href="#networkx" title="Permanent link">&para;</a></h3>
+<p>Optimize graph algorithms in NetworkX for improved performance</p>
+<p><strong>Category:</strong> algorithm-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.5, performance: 0.5 &nbsp;·&nbsp; <strong>Tags:</strong> graph, network, algorithm, performance</p>
+<details class="example">
+<summary>View initial code (<code>networkx/algorithms/centrality/betweenness.py</code>)</summary>
+<div class="highlight"><pre><span></span><code>    <span class="n">S</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>  <span class="c1"># sigma[v]=0 for v in G</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">sigma</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">D</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">s</span><span class="p">])</span>
+    <span class="k">while</span> <span class="n">Q</span><span class="p">:</span>  <span class="c1"># use BFS to find shortest paths</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="n">S</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">Dv</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+        <span class="n">sigmav</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span>
+                <span class="n">Q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+                <span class="n">D</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">Dv</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">D</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">==</span> <span class="n">Dv</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># this is a shortest path, count paths</span>
+                <span class="n">sigma</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="n">sigmav</span>
+                <span class="n">P</span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># predecessors</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">D</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/networkx/networkx">Source repository</a></p>
+<hr />
+<h3 id="pandas_rolling_rank"><code>pandas_rolling_rank</code><a class="headerlink" href="#pandas_rolling_rank" title="Permanent link">&para;</a></h3>
+<p>Optimize pandas rolling_rank from O(n log w) C skiplist to O(n·w) Numba JIT for small windows, discovering that constant factors trump asymptotic complexity</p>
+<p><strong>Category:</strong> performance-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.7, performance: 0.3 &nbsp;·&nbsp; <strong>Tags:</strong> pandas, rolling-rank, jit-compilation, numba, constant-factors, counter-intuitive-optimization</p>
+<details class="example">
+<summary>View initial code (<code>pandas_rolling_rank.py</code>)</summary>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Compute rolling rank using pandas' C-based skiplist implementation.</span>
+
+<span class="sd">        BASELINE PERFORMANCE:</span>
+<span class="sd">        - Uses O(n log w) skiplist algorithm</span>
+<span class="sd">        - Implemented in Cython for speed</span>
+<span class="sd">        - Works well for all window sizes</span>
+
+<span class="sd">        OPPORTUNITY FOR IMPROVEMENT:</span>
+<span class="sd">        - For small windows (w &lt; 300), JIT compilation can be faster</span>
+<span class="sd">        - Simpler algorithm with lower constant factors</span>
+<span class="sd">        - Potential 2-3x speedup for typical use cases</span>
+<span class="sd">        """</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+        <span class="c1"># Use pandas' implementation directly</span>
+        <span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span>
+            <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window_size</span><span class="p">,</span>
+            <span class="n">min_periods</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window_size</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span>
+            <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+            <span class="n">ascending</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ascending</span><span class="p">,</span>
+            <span class="n">pct</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pct</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">values</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/pandas-dev/pandas">Source repository</a></p>
+<hr />
+<h3 id="pymoo"><code>pymoo</code><a class="headerlink" href="#pymoo" title="Permanent link">&para;</a></h3>
+<p>Optimize non-dominated sorting in pymoo to improve performance (especially bi-objective) while preserving correctness of Pareto fronts.</p>
+<p><strong>Category:</strong> algorithm-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.6, performance: 0.4 &nbsp;·&nbsp; <strong>Tags:</strong> pymoo, multi-objective, non-dominated-sorting, performance</p>
+<details class="example">
+<summary>View initial code (<code>pymoo/functions/standard/non_dominated_sorting.py</code>)</summary>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="sd">"""Fast non-dominated sorting algorithm."""</span>
+    <span class="k">if</span> <span class="s2">"dominator"</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">M</span> <span class="o">=</span> <span class="n">Dominator</span><span class="o">.</span><span class="n">calc_domination_matrix</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">M</span> <span class="o">=</span> <span class="n">dominator</span><span class="o">.</span><span class="n">calc_domination_matrix</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+
+    <span class="c1"># calculate the dominance matrix</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">fronts</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fronts</span>
+
+    <span class="c1"># final rank that will be returned</span>
+    <span class="n">n_ranked</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ranked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="c1"># for each individual a list of all individuals that are dominated by this one</span>
+    <span class="n">is_dominating</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+    <span class="c1"># storage for the number of solutions dominated this one</span>
+    <span class="n">n_dominated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">current_front</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">rel</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">rel</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">is_dominating</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                <span class="n">n_dominated</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">rel</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">is_dominating</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">n_dominated</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">n_dominated</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">current_front</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">ranked</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="n">n_ranked</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># append the first front to the current front</span>
+    <span class="n">fronts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_front</span><span class="p">)</span>
+
+    <span class="c1"># while not all solutions are assigned to a pareto front</span>
+    <span class="k">while</span> <span class="n">n_ranked</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+
+        <span class="n">next_front</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># for each individual in the current front</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">current_front</span><span class="p">:</span>
+
+            <span class="c1"># all solutions that are dominated by this individuals</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">is_dominating</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">n_dominated</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">n_dominated</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">next_front</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                    <span class="n">ranked</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+                    <span class="n">n_ranked</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">fronts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_front</span><span class="p">)</span>
+        <span class="n">current_front</span> <span class="o">=</span> <span class="n">next_front</span>
+
+    <span class="k">return</span> <span class="n">fronts</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/anyoptimization/pymoo">Source repository</a></p>
+<hr />
+<h3 id="python-chess"><code>python-chess</code><a class="headerlink" href="#python-chess" title="Permanent link">&para;</a></h3>
+<p>Optimize chess engine algorithms for improved performance</p>
+<p><strong>Category:</strong> performance-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.6, performance: 0.4 &nbsp;·&nbsp; <strong>Tags:</strong> chess, game, algorithm, performance</p>
+<details class="example">
+<summary>View initial code (<code>chess/__init__.py</code>)</summary>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">generate_pseudo_legal_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_mask</span><span class="p">:</span> <span class="n">Bitboard</span> <span class="o">=</span> <span class="n">BB_ALL</span><span class="p">,</span> <span class="n">to_mask</span><span class="p">:</span> <span class="n">Bitboard</span> <span class="o">=</span> <span class="n">BB_ALL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Move</span><span class="p">]:</span>
+        <span class="n">our_pieces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">occupied_co</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">turn</span><span class="p">]</span>
+
+        <span class="c1"># Generate piece moves.</span>
+        <span class="n">non_pawns</span> <span class="o">=</span> <span class="n">our_pieces</span> <span class="o">&amp;</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">pawns</span> <span class="o">&amp;</span> <span class="n">from_mask</span>
+        <span class="k">for</span> <span class="n">from_square</span> <span class="ow">in</span> <span class="n">scan_reversed</span><span class="p">(</span><span class="n">non_pawns</span><span class="p">):</span>
+            <span class="n">moves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attacks_mask</span><span class="p">(</span><span class="n">from_square</span><span class="p">)</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">our_pieces</span> <span class="o">&amp;</span> <span class="n">to_mask</span>
+            <span class="k">for</span> <span class="n">to_square</span> <span class="ow">in</span> <span class="n">scan_reversed</span><span class="p">(</span><span class="n">moves</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">)</span>
+
+        <span class="c1"># Generate castling moves.</span>
+        <span class="k">if</span> <span class="n">from_mask</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">kings</span><span class="p">:</span>
+            <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_castling_moves</span><span class="p">(</span><span class="n">from_mask</span><span class="p">,</span> <span class="n">to_mask</span><span class="p">)</span>
+
+        <span class="c1"># The remaining moves are all pawn moves.</span>
+        <span class="n">pawns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pawns</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">occupied_co</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">turn</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">from_mask</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pawns</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Generate pawn captures.</span>
+        <span class="n">capturers</span> <span class="o">=</span> <span class="n">pawns</span>
+        <span class="k">for</span> <span class="n">from_square</span> <span class="ow">in</span> <span class="n">scan_reversed</span><span class="p">(</span><span class="n">capturers</span><span class="p">):</span>
+            <span class="n">targets</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">BB_PAWN_ATTACKS</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">turn</span><span class="p">][</span><span class="n">from_square</span><span class="p">]</span> <span class="o">&amp;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">occupied_co</span><span class="p">[</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span><span class="p">]</span> <span class="o">&amp;</span> <span class="n">to_mask</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">to_square</span> <span class="ow">in</span> <span class="n">scan_reversed</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">square_rank</span><span class="p">(</span><span class="n">to_square</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">RANK_1</span><span class="p">,</span> <span class="n">RANK_8</span><span class="p">]:</span>
+                    <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">,</span> <span class="n">QUEEN</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">,</span> <span class="n">ROOK</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">,</span> <span class="n">BISHOP</span><span class="p">)</span>
+                    <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">,</span> <span class="n">KNIGHT</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">)</span>
+
+        <span class="c1"># Prepare pawn advance generation.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">==</span> <span class="n">WHITE</span><span class="p">:</span>
+            <span class="n">single_moves</span> <span class="o">=</span> <span class="n">pawns</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">&amp;</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">occupied</span>
+            <span class="n">double_moves</span> <span class="o">=</span> <span class="n">single_moves</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">&amp;</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">occupied</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">BB_RANK_3</span> <span class="o">|</span> <span class="n">BB_RANK_4</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">single_moves</span> <span class="o">=</span> <span class="n">pawns</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span> <span class="o">&amp;</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">occupied</span>
+            <span class="n">double_moves</span> <span class="o">=</span> <span class="n">single_moves</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span> <span class="o">&amp;</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">occupied</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">BB_RANK_6</span> <span class="o">|</span> <span class="n">BB_RANK_5</span><span class="p">)</span>
+
+        <span class="n">single_moves</span> <span class="o">&amp;=</span> <span class="n">to_mask</span>
+        <span class="n">double_moves</span> <span class="o">&amp;=</span> <span class="n">to_mask</span>
+
+        <span class="c1"># Generate single pawn moves.</span>
+        <span class="k">for</span> <span class="n">to_square</span> <span class="ow">in</span> <span class="n">scan_reversed</span><span class="p">(</span><span class="n">single_moves</span><span class="p">):</span>
+            <span class="n">from_square</span> <span class="o">=</span> <span class="n">to_square</span> <span class="o">+</span> <span class="p">(</span><span class="mi">8</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">==</span> <span class="n">BLACK</span> <span class="k">else</span> <span class="o">-</span><span class="mi">8</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">square_rank</span><span class="p">(</span><span class="n">to_square</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">RANK_1</span><span class="p">,</span> <span class="n">RANK_8</span><span class="p">]:</span>
+                <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">,</span> <span class="n">QUEEN</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">,</span> <span class="n">ROOK</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">,</span> <span class="n">BISHOP</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">,</span> <span class="n">KNIGHT</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">)</span>
+
+        <span class="c1"># Generate double pawn moves.</span>
+        <span class="k">for</span> <span class="n">to_square</span> <span class="ow">in</span> <span class="n">scan_reversed</span><span class="p">(</span><span class="n">double_moves</span><span class="p">):</span>
+            <span class="n">from_square</span> <span class="o">=</span> <span class="n">to_square</span> <span class="o">+</span> <span class="p">(</span><span class="mi">16</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">==</span> <span class="n">BLACK</span> <span class="k">else</span> <span class="o">-</span><span class="mi">16</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">Move</span><span class="p">(</span><span class="n">from_square</span><span class="p">,</span> <span class="n">to_square</span><span class="p">)</span>
+
+        <span class="c1"># Generate en passant captures.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ep_square</span><span class="p">:</span>
+            <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_pseudo_legal_ep</span><span class="p">(</span><span class="n">from_mask</span><span class="p">,</span> <span class="n">to_mask</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/niklasf/python-chess">Source repository</a></p>
+<hr />
+<h3 id="python-pathfinding"><code>python-pathfinding</code><a class="headerlink" href="#python-pathfinding" title="Permanent link">&para;</a></h3>
+<p>Optimize pathfinding algorithms for improved performance</p>
+<p><strong>Category:</strong> algorithm-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.5, performance: 0.5 &nbsp;·&nbsp; <strong>Tags:</strong> pathfinding, algorithm, performance, a-star</p>
+<details class="example">
+<summary>View initial code (<code>pathfinding/core/heap.py</code>)</summary>
+<div class="highlight"><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">pop_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Pops node off the heap. i.e. returns the one with the lowest f.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">        1. Checks if that values is in removed_node_tuples first, if not tries</span>
+<span class="sd">           again.</span>
+<span class="sd">        2. We use this approach to avoid invalidating the heap structure.</span>
+<span class="sd">        """</span>
+        <span class="n">node_tuple</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_list</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">node_tuple</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">removed_node_tuples</span><span class="p">:</span>
+            <span class="n">node_tuple</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_list</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">,</span> <span class="n">Graph</span><span class="p">):</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">node_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">,</span> <span class="n">Grid</span><span class="p">):</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">node_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">node_tuple</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="p">,</span> <span class="n">World</span><span class="p">):</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">grids</span><span class="p">[</span>
+                <span class="n">node_tuple</span><span class="p">[</span><span class="mi">4</span><span class="p">]]</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">node_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">node_tuple</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">node</span>
+
+<span class="c1"># ...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">push_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Push node into heap.</span>
+
+<span class="sd">        :param node: The node to push.</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_pushed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_pushed</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">node_tuple</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_node_tuple</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_pushed</span><span class="p">)</span>
+        <span class="n">node_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_node_id</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">heap_order</span><span class="p">[</span><span class="n">node_id</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_pushed</span>
+
+        <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_list</span><span class="p">,</span> <span class="n">node_tuple</span><span class="p">)</span>
+
+<span class="c1"># ...</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">remove_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Remove the node from the heap.</span>
+
+<span class="sd">        This just stores it in a set and we just ignore the node if it does</span>
+<span class="sd">        get popped from the heap.</span>
+
+<span class="sd">        :param node: The node to remove.</span>
+<span class="sd">        :param f: The old f value of the node.</span>
+<span class="sd">        """</span>
+        <span class="n">node_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_node_id</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="n">heap_order</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">heap_order</span><span class="p">[</span><span class="n">node_id</span><span class="p">]</span>
+        <span class="n">node_tuple</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_node_tuple</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">heap_order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">removed_node_tuples</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node_tuple</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/brean/python-pathfinding">Source repository</a></p>
+<hr />
+<h3 id="sympy"><code>sympy</code><a class="headerlink" href="#sympy" title="Permanent link">&para;</a></h3>
+<p>Optimize SymPy Min/Max _find_localzeros algorithm from O(n²) to O(n log n) using transitivity and antichain detection to reduce redundant comparisons while preserving correctness.</p>
+<p><strong>Category:</strong> performance-optimization &nbsp;·&nbsp; <strong>Evaluation weights:</strong> correctness: 0.5, performance: 0.5 &nbsp;·&nbsp; <strong>Tags:</strong> sympy, algorithm, complexity-reduction, partial-ordering, performance</p>
+<details class="example">
+<summary>View initial code (<code>sympy_implementation.py</code>)</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MinMaxBase</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Simplified MinMaxBase class focusing on the _find_localzeros algorithm.</span>
+
+<span class="sd">    The goal is to optimize the O(n²) algorithm that sequentially allocates values</span>
+<span class="sd">    to localzeros by finding which values are more extreme than others.</span>
+<span class="sd">    """</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_localzeros</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        Sequentially allocate values to localzeros.</span>
+
+<span class="sd">        When a value is identified as being more extreme than another member it</span>
+<span class="sd">        replaces that member; if this is never true, then the value is simply</span>
+<span class="sd">        appended to the localzeros.</span>
+
+<span class="sd">        CURRENT COMPLEXITY: O(n²) - compares each value against all existing localzeros</span>
+<span class="sd">        TARGET COMPLEXITY: O(n log n) or O(n) using transitivity</span>
+<span class="sd">        """</span>
+        <span class="n">localzeros</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="c1"># This is the O(n²) bottleneck that needs optimization</span>
+        <span class="c1"># The algorithm compares every new value v against all existing localzeros</span>
+        <span class="c1"># Optimization opportunity: Use transitivity to avoid redundant comparisons</span>
+        <span class="c1"># If (x, y) and (y, z) have been compared, then (x, z) doesn't need testing</span>
+
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+            <span class="n">is_newzero</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">localzeros_</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">localzeros</span><span class="p">)</span>  <span class="c1"># O(n) conversion on each iteration</span>
+            <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">localzeros_</span><span class="p">:</span>            <span class="c1"># Nested loop = O(n²) total</span>
+                <span class="k">if</span> <span class="nb">id</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+                    <span class="n">is_newzero</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">con</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_is_connected</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">con</span><span class="p">:</span>
+                        <span class="n">is_newzero</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="k">if</span> <span class="n">con</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">or</span> <span class="n">con</span> <span class="o">==</span> <span class="bp">cls</span><span class="p">:</span>
+                            <span class="n">localzeros</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+                            <span class="n">localzeros</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">v</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">is_newzero</span><span class="p">:</span>
+                <span class="n">localzeros</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">v</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">localzeros</span>
+</code></pre></div>
+</details>
+<p><a class="md-button" href="https://github.com/sympy/sympy">Source repository</a></p>
+<hr />
+<p>Evaluator approaches available for every task: handwritten, llm_generated, llm_judge.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "content.code.copy", "content.action.edit"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

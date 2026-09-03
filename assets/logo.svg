@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">EvolveBench</title>
+  <desc id="desc">A simplified double helix, standing for evolutionary search and the benchmark that measures it.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="16" y1="8" x2="112" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E6BD6"/>
+      <stop offset="100%" stop-color="#0B2C63"/>
+    </linearGradient>
+    <linearGradient id="strandA" x1="44" y1="18" x2="84" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7FC8FF"/>
+      <stop offset="100%" stop-color="#1E6BD6"/>
+    </linearGradient>
+    <linearGradient id="strandB" x1="84" y1="18" x2="44" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#0EA968"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#bg)"/>
+
+  <g fill="none" stroke-linecap="round">
+    <!-- two strands, one clean crossing -->
+    <path d="M44,18 C44,50 84,78 84,110" stroke="url(#strandA)" stroke-width="10"/>
+    <path d="M84,18 C84,50 44,78 44,110" stroke="url(#strandB)" stroke-width="10"/>
+  </g>
+
+  <!-- base pairs -->
+  <path d="M50,32 L78,32" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+  <path d="M44,64 L84,64" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+  <path d="M50,96 L78,96" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.85"/>
+</svg>
