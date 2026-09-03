@@ -50,10 +50,10 @@ def main() -> None:
     lines = [
         "# Tasks",
         "",
-        f"EvolveBench currently ships **{len(task_ids)} tasks** drawn from real "
-        "open-source projects. Each task packages an editable program, a "
-        "correctness oracle, a performance harness, and configurations for "
-        "comparing evaluator designs.",
+        "EvolveBench draws tasks from real open-source projects. Each task "
+        "packages an editable program, a correctness oracle, a performance "
+        "harness, and configurations for comparing evaluator designs. The "
+        "current set is listed below.",
         "",
         "Want to add one? See [Contributing](contributing.md).",
         "",
