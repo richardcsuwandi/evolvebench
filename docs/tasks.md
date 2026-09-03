@@ -4,6 +4,20 @@ EvolveBench draws tasks from real open-source projects. Each task packages an ed
 
 Want to add one? See [Contributing](contributing.md).
 
+| Task | Category | Evaluation weights | Tags |
+| --- | --- | --- | --- |
+| [`BayesianOptimization`](#bayesianoptimization) | algorithm-optimization | correctness: 0.4, performance: 0.6 | bayesian-optimization, acquisition-function, performance, vectorization |
+| [`difflib`](#difflib) | performance-optimization | correctness: 0.5, performance: 0.5 | difflib, recursion, algorithm, performance |
+| [`jsonschema`](#jsonschema) | performance-optimization | correctness: 0.7, performance: 0.3 | jsonschema, equality-checking, type-dispatch, python-312-regression, validation, recursive-algorithms |
+| [`lmcache`](#lmcache) | performance-optimization | correctness: 0.5, performance: 0.5 | lmcache, cache, lfu, llm-serving, complexity-reduction, sigcomm-2024 |
+| [`marko`](#marko) | performance-optimization | correctness: 0.5, performance: 0.5 | markdown, parser, performance, nested-loops |
+| [`networkx`](#networkx) | algorithm-optimization | correctness: 0.5, performance: 0.5 | graph, network, algorithm, performance |
+| [`pandas_rolling_rank`](#pandas_rolling_rank) | performance-optimization | correctness: 0.7, performance: 0.3 | pandas, rolling-rank, jit-compilation, numba, constant-factors, counter-intuitive-optimization |
+| [`pymoo`](#pymoo) | algorithm-optimization | correctness: 0.6, performance: 0.4 | pymoo, multi-objective, non-dominated-sorting, performance |
+| [`python-chess`](#python-chess) | performance-optimization | correctness: 0.6, performance: 0.4 | chess, game, algorithm, performance |
+| [`python-pathfinding`](#python-pathfinding) | algorithm-optimization | correctness: 0.5, performance: 0.5 | pathfinding, algorithm, performance, a-star |
+| [`sympy`](#sympy) | performance-optimization | correctness: 0.5, performance: 0.5 | sympy, algorithm, complexity-reduction, partial-ordering, performance |
+
 ### `BayesianOptimization`
 
 Optimize acquisition function random sampling in Bayesian optimization for improved performance

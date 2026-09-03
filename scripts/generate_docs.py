@@ -53,6 +53,29 @@ def extract_evolve_blocks(task_id: str, evolve_source: str) -> tuple[str, str]:
     return language, snippet
 
 
+def slugify(task_id: str) -> str:
+    """Mirror the toc extension's anchor id for a `### `task_id`` heading."""
+    return task_id.lower()
+
+
+def render_summary_table(task_ids: list[str], metas: dict[str, dict]) -> list[str]:
+    lines = [
+        "| Task | Category | Evaluation weights | Tags |",
+        "| --- | --- | --- | --- |",
+    ]
+    for task_id in task_ids:
+        meta = metas[task_id]
+        category = meta.get("category", "")
+        criteria = meta.get("evaluation_criteria", {})
+        weights = ", ".join(f"{k}: {v}" for k, v in criteria.items())
+        tags = ", ".join(meta.get("tags", []))
+        lines.append(
+            f"| [`{task_id}`](#{slugify(task_id)}) | {category} | {weights} | {tags} |"
+        )
+    lines.append("")
+    return lines
+
+
 def render_task(task_id: str, meta: dict) -> list[str]:
     repo = meta.get("repository", "")
     description = meta.get("description", "")
@@ -113,11 +136,17 @@ def main() -> None:
         "",
     ]
 
-    for task_id in sorted(task_ids):
+    sorted_ids = sorted(task_ids)
+    metas = {}
+    for task_id in sorted_ids:
         try:
-            meta = load_task(task_id)
+            metas[task_id] = load_task(task_id)
         except FileNotFoundError:
             continue
+
+    lines.extend(render_summary_table(list(metas.keys()), metas))
+
+    for task_id, meta in metas.items():
         lines.extend(render_task(task_id, meta))
 
     lines.append(
