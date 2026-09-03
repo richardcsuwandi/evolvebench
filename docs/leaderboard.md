@@ -7,6 +7,19 @@ below. If you've run [ShinkaEvolve](https://github.com/SakanaAI/ShinkaEvolve),
 agents, or anything else against EvolveBench, we'd love to add your numbers here.
 See [Submitting a result](#submitting-a-result).
 
+## Overall
+
+Aggregate score is the harmonic mean of per-task speedups (evolved program vs.
+baseline) across all tasks, following the aggregation convention used in
+[AlgoTune](https://algotune.io/). Per-task and per-evaluator scores are below.
+
+| Rank | System | Model | Evaluator | Aggregate score |
+| --- | --- | --- | --- | --- |
+| 1 | [OpenEvolve](https://github.com/algorithmicsuperintelligence/openevolve) | Gemini 2.5 Flash Lite | LLM-generated | **1.35×** |
+| 2 | [OpenEvolve](https://github.com/algorithmicsuperintelligence/openevolve) | Gemini 2.5 Flash Lite | Handwritten | 1.12× |
+
+Submit your own system's numbers, see [Submitting a result](#submitting-a-result).
+
 ## OpenEvolve
 
 Per-task speedup (evolved program vs. baseline) under each evaluator design. The
