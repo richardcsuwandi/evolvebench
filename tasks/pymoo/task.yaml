@@ -1,0 +1,56 @@
+task_id: "pymoo"
+description: "Optimize non-dominated sorting in pymoo to improve performance (especially bi-objective) while preserving correctness of Pareto fronts."
+repository: "https://github.com/anyoptimization/pymoo"
+optimization_target: "performance-non-dominated-sorting"
+source_directory: "pymoo"
+source_file: "pymoo/functions/standard/non_dominated_sorting.py"
+
+# Evaluation configuration
+evaluation_criteria:
+  correctness: 0.6
+  performance: 0.4
+
+required_metrics:
+  - "correctness"
+  - "performance"
+  - "combined_score"
+
+# Task metadata
+category: "algorithm-optimization"
+tags:
+  - "pymoo"
+  - "multi-objective"
+  - "non-dominated-sorting"
+  - "performance"
+
+# Baseline performance (indicative)
+baseline_metrics:
+  correctness: 1.0
+  performance: 0.4
+  combined_score: 0.76
+
+# Task-specific configuration
+task_config:
+  max_iterations: 40
+  diff_based_evolution: true
+  max_code_length: 60000
+  language: "python"
+
+  # LLM configuration
+  llm_model: "google/gemini-2.5-flash"
+  api_base: "https://openrouter.ai/api/v1"
+
+  # Database configuration
+  population_size: 120
+  archive_size: 25
+  feature_dimensions: ["correctness", "performance"]
+
+# LLM Judge specific configuration
+llm_judge_config:
+  evaluation_criteria: "Evaluate non-dominated sorting optimization for correctness (same fronts) and performance (runtime speedup)."
+  scoring_rubric: "Score 0.0-1.0 for correctness (front equivalence) and performance (speed improvement). Consider stability across sizes."
+  task_context: "pymoo non-dominated sorting optimization with emphasis on bi-objective O(N log N) improvements while preserving exact fronts."
+  llm_criteria:
+    correctness: 0.6
+    performance: 0.4
+  json_format: '"correctness": <score>, "performance": <score>'

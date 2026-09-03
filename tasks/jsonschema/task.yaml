@@ -1,0 +1,60 @@
+task_id: "jsonschema"
+description: "Optimize python-jsonschema equality checking functions (_mapping_equal, _sequence_equal, equal) to address Python 3.12 performance regression by reducing isinstance overhead and improving type-aware dispatch"
+repository: "https://github.com/python-jsonschema/jsonschema"
+optimization_target: "equality-checking-performance"
+source_directory: "."
+
+# Evaluation configuration
+evaluation_criteria:
+  correctness: 0.7
+  performance: 0.3
+
+required_metrics:
+  - "correctness"
+  - "performance"
+  - "combined_score"
+
+# Task metadata
+category: "performance-optimization"
+tags:
+  - "jsonschema"
+  - "equality-checking"
+  - "type-dispatch"
+  - "python-312-regression"
+  - "validation"
+  - "recursive-algorithms"
+
+# Baseline performance (from initial_program.py)
+baseline_metrics:
+  correctness: 1.0
+  performance: 0.3
+  combined_score: 0.79
+
+# Task-specific configuration
+task_config:
+  max_iterations: 50
+  diff_based_evolution: true
+  max_code_length: 50000
+  language: "python"
+
+  # LLM configuration
+  llm_model: "google/gemini-2.5-flash-preview-09-2025"
+  api_base: "https://openrouter.ai/api/v1"
+
+  # Database configuration
+  population_size: 120
+  archive_size: 25
+  feature_dimensions: ["correctness", "performance"]
+
+# LLM Generated Evaluator specific configuration
+llm_evaluator_generation_model: "anthropic/claude-sonnet-4.5"
+
+# LLM Judge specific configuration
+llm_judge_config:
+  evaluation_criteria: "Evaluate python-jsonschema equality checking optimization for correctness and performance. The evolved code must preserve JSON Schema semantics (False != 0, True != 1) while reducing isinstance overhead and improving type-aware dispatch to address Python 3.12 regression."
+  scoring_rubric: "Score 0.0-1.0 for correctness and performance. Correctness requires 100% test pass rate including bool/int distinction, nested structures, and edge cases. Performance should show measurable speedup on deeply nested SBOM-like structures."
+  task_context: "Python-jsonschema Issue #1304: Python 3.12 performance regression affecting equality checking. The functions equal(), _mapping_equal(), and _sequence_equal() are called 56.4M times during 16MB SBOM validation. Optimization should reduce isinstance() overhead while maintaining JSON Schema semantics."
+  llm_criteria:
+    correctness: 0.7
+    performance: 0.3
+  json_format: '"correctness": <score>, "performance": <score>'

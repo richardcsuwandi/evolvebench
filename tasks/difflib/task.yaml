@@ -1,0 +1,55 @@
+task_id: "difflib"
+description: "Optimize Python difflib Differ._fancy_replace WINDOW-based search to reduce redundant ratio() calls and improve performance while preserving correctness."
+repository: "https://github.com/python/cpython/tree/main/Lib/difflib.py"
+optimization_target: "performance-fancy-replace"
+source_directory: "."
+
+# Evaluation configuration
+evaluation_criteria:
+  correctness: 0.5
+  performance: 0.5
+
+required_metrics:
+  - "correctness"
+  - "performance"
+  - "combined_score"
+
+# Task metadata
+category: "performance-optimization"
+tags:
+  - "difflib"
+  - "recursion"
+  - "algorithm"
+  - "performance"
+
+# Baseline performance
+baseline_metrics:
+  correctness: 1.0
+  performance: 0.4
+  combined_score: 0.7
+
+# Task-specific configuration
+task_config:
+  max_iterations: 40
+  diff_based_evolution: true
+  max_code_length: 50000
+  language: "python"
+  
+  # LLM configuration
+  llm_model: "google/gemini-2.5-flash"
+  api_base: "https://openrouter.ai/api/v1"
+  
+  # Database configuration
+  population_size: 120
+  archive_size: 25
+  feature_dimensions: ["correctness", "performance"]
+
+# LLM Judge specific configuration
+llm_judge_config:
+  evaluation_criteria: "Evaluate difflib Differ._fancy_replace optimization for correctness and performance. The evolved code should maintain correctness while improving performance."
+  scoring_rubric: "Score 0.0-1.0 for correctness and performance. Consider both functional correctness and algorithmic efficiency."
+  task_context: "Python difflib Differ._fancy_replace optimization. The goal is to improve the performance of the fancy_replace method while maintaining correct functionality."
+  llm_criteria:
+    correctness: 0.5
+    performance: 0.5
+  json_format: '"correctness": <score>, "performance": <score>'

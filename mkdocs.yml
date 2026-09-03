@@ -1,0 +1,51 @@
+site_name: EvolveBench
+site_description: >-
+  An open benchmark and execution harness for evaluating AI-driven research and
+  optimization systems on real software-engineering and performance-optimization
+  tasks.
+site_url: https://richardcsuwandi.github.io/evolvebench/
+repo_url: https://github.com/richardcsuwandi/evolvebench
+repo_name: richardcsuwandi/evolvebench
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - content.code.copy
+    - content.action.edit
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Tasks: tasks.md
+  - Leaderboard: leaderboard.md
+  - Contributing: contributing.md
+  - License: license.md

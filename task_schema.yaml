@@ -1,0 +1,99 @@
+# Task Metadata Schema for EvolveBench
+# This defines the structure for task.yaml files
+
+# Required fields
+task_id: string                    # Unique task identifier
+description: string               # What the task optimizes
+repository: string               # Source repository being optimized
+optimization_target: string      # Specific code block or function being optimized
+
+# Evaluation configuration
+evaluation_criteria:             # Dict of criteria with weights
+  correctness: float            # Weight for correctness (0.0-1.0)
+  performance: float           # Weight for performance (0.0-1.0)
+  # Add other criteria as needed
+
+required_metrics:               # List of metrics the evaluator must return
+  - string
+
+# Task metadata
+category: string               # e.g., "algorithm-optimization", "performance-optimization"
+tags:                         # List of tags for categorization
+  - string
+
+# Baseline performance
+baseline_metrics:             # Expected baseline performance
+  correctness: float
+  performance: float
+  combined_score: float
+
+# Task-specific configuration
+task_config:
+  max_iterations: int          # Default max iterations for this task
+  diff_based_evolution: bool  # Whether to use diff-based evolution
+  max_code_length: int        # Maximum code length for this task
+  language: string            # Programming language (python, rust, etc.)
+  
+  # LLM configuration
+  llm_model: string          # Default LLM model
+  api_base: string           # API base URL
+  
+  # Database configuration
+  population_size: int       # Population size for this task
+  archive_size: int          # Archive size for this task
+  feature_dimensions:        # Feature dimensions for MAP-Elites
+    - string
+
+  # LLM evaluator generation model
+  llm_evaluator_generation_model: string # LLM model for evaluator generation
+
+# LLM Judge specific configuration
+llm_judge_config:
+  evaluation_criteria: string    # Detailed criteria description
+  scoring_rubric: string        # Scoring guidelines
+  task_context: string          # Additional context for LLM judge
+  llm_criteria:                # Criteria weights for LLM judge
+    clarity: float
+    effectiveness: float
+    # Add other criteria as needed
+  json_format: string           # Expected JSON output format
+
+# Example task.yaml structure:
+# task_id: "marko"
+# description: "Optimize nested loops in marko parser's parse_source method"
+# repository: "https://github.com/frostming/marko"
+# optimization_target: "performance-nested-loops-parse-source"
+# evaluation_criteria:
+#   correctness: 0.5
+#   performance: 0.5
+# required_metrics:
+#   - "correctness"
+#   - "performance" 
+#   - "combined_score"
+# category: "performance-optimization"
+# tags:
+#   - "markdown"
+#   - "parser"
+#   - "performance"
+# baseline_metrics:
+#   correctness: 1.0
+#   performance: 0.3
+#   combined_score: 0.65
+# task_config:
+#   max_iterations: 20
+#   diff_based_evolution: true
+#   max_code_length: 50000
+#   language: "python"
+#   llm_model: "google/gemini-2.5-flash"
+#   api_base: "https://openrouter.ai/api/v1"
+#   population_size: 100
+#   archive_size: 20
+#   feature_dimensions: ["correctness", "performance"]
+# llm_judge_config:
+#   evaluation_criteria: "Evaluate the parser's correctness and performance improvements"
+#   scoring_rubric: "Score 0.0-1.0 for correctness and performance"
+#   task_context: "Markdown parser optimization for nested loop performance"
+#   llm_criteria:
+#     correctness: 0.5
+#     performance: 0.5
+#   json_format: '"correctness": <score>, "performance": <score>'

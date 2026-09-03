@@ -1,0 +1,84 @@
+# EvolveBench config WITH novelty detection
+# Based on evolvebench default config with novelty enabled
+
+# General settings
+max_iterations: 20
+checkpoint_interval: 5
+log_level: "INFO"
+random_seed: 42
+
+# Evolution settings
+diff_based_evolution: true
+max_code_length: 1000000
+
+# Early stopping configuration
+early_stopping_enabled: true
+early_stopping_patience: 10
+early_stopping_min_iterations: 20
+early_stopping_metric: combined_score
+early_stopping_tolerance: 0.001
+
+# LLM configuration
+llm:
+  models:
+    - name: "google/gemini-2.5-flash-lite-preview-09-2025"
+      weight: 1.0
+
+  # API configuration
+  api_base: "https://openrouter.ai/api/v1"
+
+  # Generation parameters
+  temperature: 0.4
+  max_tokens: 16000
+
+  # Request parameters
+  timeout: 150
+  retries: 3
+
+# Prompt configuration
+prompt:
+  num_top_programs: 3
+  num_diverse_programs: 2
+  include_artifacts: true
+
+# Database configuration
+database:
+  # Use task-specific feature dimensions for MAP-Elites
+  feature_dimensions: ['correctness', 'performance']
+  feature_bins: 10
+
+  # Population settings
+  population_size: 100
+  archive_size: 20
+  num_islands: 4
+
+  # Selection parameters
+  elite_selection_ratio: 0.1
+  exploration_ratio: 0.3
+  exploitation_ratio: 0.6
+
+  # Migration parameters
+  migration_interval: 20
+  migration_rate: 0.1
+
+# Evaluator configuration
+evaluator:
+  # General settings
+  timeout: 200
+  max_retries: 3
+
+  # Cascade evaluation for efficiency
+  cascade_evaluation: true
+  cascade_thresholds: [0.5, 0.8]
+
+  # Parallel evaluation
+  parallel_evaluations: 4
+
+# Novelty detection settings (ENABLED)
+novelty:
+  enabled: true
+  embedding_backend: "local"
+  embedding_model: "all-MiniLM-L6-v2"
+  similarity_threshold: 0.95
+  max_regeneration_attempts: 3
+  temperature_increment: 0.15

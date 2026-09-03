@@ -1,0 +1,57 @@
+task_id: "networkx"
+description: "Optimize graph algorithms in NetworkX for improved performance"
+repository: "https://github.com/networkx/networkx"
+optimization_target: "graph-algorithm-optimization"
+source_directory: "networkx"
+
+# Evaluation configuration
+evaluation_criteria:
+  correctness: 0.5
+  performance: 0.5
+
+required_metrics:
+  - "correctness"
+  - "performance"
+  - "combined_score"
+
+# Task metadata
+category: "algorithm-optimization"
+tags:
+  - "graph"
+  - "network"
+  - "algorithm"
+  - "performance"
+
+# Baseline performance
+baseline_metrics:
+  correctness: 1.0
+  performance: 0.4
+  combined_score: 0.7
+
+# Task-specific configuration
+task_config:
+  max_iterations: 25
+  diff_based_evolution: true
+  max_code_length: 50000
+  language: "python"
+  
+  # LLM configuration
+  llm_model: "google/gemini-2.5-flash"
+  api_base: "https://openrouter.ai/api/v1"
+
+  llm_evaluator_generation_model: "anthropic/claude-sonnet-4.5"
+  
+  # Database configuration
+  population_size: 200
+  archive_size: 40
+  feature_dimensions: ["correctness", "performance"]
+
+# LLM Judge specific configuration
+llm_judge_config:
+  evaluation_criteria: "Evaluate graph algorithm optimization for correctness and performance. The evolved code should maintain algorithmic correctness while improving execution speed."
+  scoring_rubric: "Score 0.0-1.0 for correctness (algorithmic accuracy) and performance (speed improvement). Consider both functional correctness and computational efficiency."
+  task_context: "NetworkX graph algorithm optimization. The goal is to improve the performance of graph algorithms while maintaining correct results for various graph structures."
+  llm_criteria:
+    correctness: 0.5
+    performance: 0.5
+  json_format: '"correctness": <score>, "performance": <score>'

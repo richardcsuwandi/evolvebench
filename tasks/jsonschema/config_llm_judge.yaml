@@ -1,0 +1,103 @@
+# Template for LLM-as-a-Judge Configuration
+# This config uses LLM to directly judge evolved code quality
+
+# General settings
+max_iterations: 50
+checkpoint_interval: 10
+log_level: "INFO"
+random_seed: 42
+
+# Evolution settings
+diff_based_evolution: true
+max_code_length: 50000
+language: "python"
+
+# Early stopping configuration
+early_stopping_enabled: true
+early_stopping_patience: 10
+early_stopping_min_iterations: 20
+early_stopping_metric: combined_score
+early_stopping_tolerance: 0.001
+
+# LLM configuration
+llm:
+  models:
+    - name: "google/gemini-2.5-flash-preview-09-2025"
+      weight: 1.0
+
+  # API configuration
+  api_base: "https://openrouter.ai/api/v1"
+
+  # Generation parameters
+  temperature: 0.6
+  max_tokens: 16000
+
+  # Request parameters
+  timeout: 150
+  retries: 3
+
+# Prompt configuration
+prompt:
+  template_dir: null  # Use default templates
+  num_top_programs: 3
+  num_diverse_programs: 2
+  include_artifacts: true
+
+# Database configuration
+database:
+  # Use LLM criteria as feature dimensions for MAP-Elites
+  feature_dimensions: ['correctness', 'performance']
+  feature_bins: 10
+
+  # Population settings
+  population_size: 120
+  archive_size: 25
+  num_islands: 4
+
+  # Selection parameters
+  elite_selection_ratio: 0.1
+  exploration_ratio: 0.3
+  exploitation_ratio: 0.6
+
+  # Migration parameters
+  migration_interval: 20
+  migration_rate: 0.1
+
+# Evaluator configuration
+evaluator:
+  # General settings
+  timeout: 200
+  max_retries: 3
+
+  # Parallel evaluation
+  parallel_evaluations: 4
+
+  # LLM-only evaluation criteria and weights
+  llm_criteria: {'correctness': 0.7, 'performance': 0.3}
+
+  # Custom evaluation prompt for judging code quality
+  llm_evaluation_prompt: |
+    Evaluate the following evolved code for the task: Optimize python-jsonschema equality checking functions (_mapping_equal, _sequence_equal, equal) to address Python 3.12 performance regression by reducing isinstance overhead and improving type-aware dispatch
+
+    TASK CONTEXT: Python-jsonschema Issue #1304: Python 3.12 performance regression affecting equality checking. The functions equal(), _mapping_equal(), and _sequence_equal() are called 56.4M times during 16MB SBOM validation. Optimization should reduce isinstance() overhead while maintaining JSON Schema semantics.
+    OPTIMIZATION GOAL: Improve equality-checking-performance
+
+    Evaluate python-jsonschema equality checking optimization for correctness and performance. The evolved code must preserve JSON Schema semantics (False != 0, True != 1) while reducing isinstance overhead and improving type-aware dispatch to address Python 3.12 regression.
+
+    Evaluation criteria:
+    {criteria}
+
+    Code to evaluate:
+    ```
+    {program_code}
+    ```
+
+    Return ONLY a JSON object with numerical scores for each criterion:
+    {{
+      "correctness": <score>, "performance": <score>
+    }}
+
+    Be objective and precise. Consider the code's correctness (especially bool/int distinction), performance (type caching, reduced isinstance calls), and quality.
+
+  # Cascade evaluation disabled for LLM-only mode (single evaluation stage)
+  cascade_evaluation: false

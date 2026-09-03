@@ -1,0 +1,55 @@
+task_id: "python-pathfinding"
+description: "Optimize pathfinding algorithms for improved performance"
+repository: "https://github.com/brean/python-pathfinding"
+optimization_target: "heap-optimization"
+source_directory: "pathfinding"
+
+# Evaluation configuration
+evaluation_criteria:
+  correctness: 0.5
+  performance: 0.5
+
+required_metrics:
+  - "correctness"
+  - "performance"
+  - "combined_score"
+
+# Task metadata
+category: "algorithm-optimization"
+tags:
+  - "pathfinding"
+  - "algorithm"
+  - "performance"
+  - "a-star"
+
+# Baseline performance
+baseline_metrics:
+  correctness: 1.0
+  performance: 0.4
+  combined_score: 0.7
+
+# Task-specific configuration
+task_config:
+  max_iterations: 25
+  diff_based_evolution: true
+  max_code_length: 50000
+  language: "python"
+  
+  # LLM configuration
+  llm_model: "google/gemini-2.5-flash"
+  api_base: "https://openrouter.ai/api/v1"
+  
+  # Database configuration
+  population_size: 200
+  archive_size: 40
+  feature_dimensions: ["correctness", "performance"]
+
+# LLM Judge specific configuration
+llm_judge_config:
+  evaluation_criteria: "Evaluate pathfinding algorithm optimization for correctness and performance. The evolved code should maintain pathfinding accuracy while improving search speed."
+  scoring_rubric: "Score 0.0-1.0 for correctness (pathfinding accuracy) and performance (search speed). Consider both functional correctness and algorithmic efficiency."
+  task_context: "Python-pathfinding algorithm optimization. The goal is to improve the performance of pathfinding algorithms while maintaining correct path discovery."
+  llm_criteria:
+    correctness: 0.5
+    performance: 0.5
+  json_format: '"correctness": <score>, "performance": <score>'

@@ -1,0 +1,58 @@
+task_id: "BayesianOptimization"
+description: "Optimize acquisition function random sampling in Bayesian optimization for improved performance"
+repository: "https://github.com/fmfn/BayesianOptimization"
+optimization_target: "optimization-acquisition-sampling"
+source_directory: "bayes_opt"
+
+# Evaluation configuration
+evaluation_criteria:
+  correctness: 0.4
+  performance: 0.6
+
+required_metrics:
+  - "correctness"
+  - "performance"
+  - "combined_score"
+
+# Task metadata
+category: "algorithm-optimization"
+tags:
+  - "bayesian-optimization"
+  - "acquisition-function"
+  - "performance"
+  - "vectorization"
+
+# Baseline performance
+baseline_metrics:
+  correctness: 1.0
+  performance: 0.4
+  combined_score: 0.64
+
+# Task-specific configuration
+task_config:
+  max_iterations: 30
+  diff_based_evolution: true
+  max_code_length: 50000
+  language: "python"
+  
+  # LLM configuration
+  llm_model: "google/gemini-2.5-flash"
+  api_base: "https://openrouter.ai/api/v1"
+  
+  # Database configuration
+  population_size: 800
+  archive_size: 80
+  feature_dimensions: ["correctness", "performance"]
+
+# LLM Generated Evaluator specific configuration
+llm_evaluator_generation_model: "anthropic/claude-sonnet-4.5"
+
+# LLM Judge specific configuration
+llm_judge_config:
+  evaluation_criteria: "Evaluate the acquisition sampling optimization for correctness and performance. The evolved code should maintain numerical accuracy while significantly improving sampling speed."
+  scoring_rubric: "Score 0.0-1.0 for correctness (numerical accuracy) and performance (speed improvement). Consider both functional correctness and algorithmic efficiency."
+  task_context: "Bayesian optimization acquisition function sampling optimization. The goal is to improve the speed of random sampling and acquisition function evaluation while maintaining numerical precision."
+  llm_criteria:
+    correctness: 0.4
+    performance: 0.6
+  json_format: '"correctness": <score>, "performance": <score>'

@@ -1,0 +1,60 @@
+task_id: "lmcache"
+description: "Optimize LMCache LFU cache policy from O(log N) to O(1) by tracking minimum frequency instead of using SortedDict"
+repository: "https://github.com/LMCache/LMCache"
+optimization_target: "lfu-cache-complexity"
+source_directory: "."
+
+# Evaluation configuration
+evaluation_criteria:
+  correctness: 0.5
+  performance: 0.5
+
+required_metrics:
+  - "correctness"
+  - "performance"
+  - "combined_score"
+
+# Task metadata
+category: "performance-optimization"
+tags:
+  - "lmcache"
+  - "cache"
+  - "lfu"
+  - "llm-serving"
+  - "complexity-reduction"
+  - "sigcomm-2024"
+
+# Baseline performance (from SortedDict implementation)
+baseline_metrics:
+  correctness: 1.0
+  performance: 0.5
+  combined_score: 0.5
+
+# Task-specific configuration
+task_config:
+  max_iterations: 50
+  diff_based_evolution: true
+  max_code_length: 50000
+  language: "python"
+
+  # LLM configuration
+  llm_model: "google/gemini-2.5-flash"
+  api_base: "https://openrouter.ai/api/v1"
+
+  # Database configuration
+  population_size: 120
+  archive_size: 25
+  feature_dimensions: ["correctness", "performance"]
+
+# LLM Generated Evaluator specific configuration
+llm_evaluator_generation_model: "anthropic/claude-sonnet-4.5"
+
+# LLM Judge specific configuration
+llm_judge_config:
+  evaluation_criteria: "Evaluate LMCache LFU cache policy optimization for correctness and performance. The evolved code should maintain correctness while reducing algorithmic complexity from O(log N) to O(1)."
+  scoring_rubric: "Score 0.0-1.0 for correctness and performance. Consider both functional correctness (LFU eviction, FIFO tie-breaking, pinned entries) and algorithmic efficiency (min-frequency tracking)."
+  task_context: "LMCache LFU cache policy optimization. The goal is to achieve O(1) operations for cache hits, puts, and evictions by replacing SortedDict with minimum frequency tracking."
+  llm_criteria:
+    correctness: 0.5
+    performance: 0.5
+  json_format: '"correctness": <score>, "performance": <score>'

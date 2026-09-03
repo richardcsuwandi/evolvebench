@@ -1,0 +1,68 @@
+task_id: "sympy"
+description: "Optimize SymPy Min/Max _find_localzeros algorithm from O(n²) to O(n log n) using transitivity and antichain detection to reduce redundant comparisons while preserving correctness."
+repository: "https://github.com/sympy/sympy"
+optimization_target: "performance-min-max-localzeros"
+source_directory: "sympy/functions/elementary"
+
+# Evaluation configuration
+evaluation_criteria:
+  correctness: 0.5
+  performance: 0.5
+
+required_metrics:
+  - "correctness"
+  - "performance"
+  - "combined_score"
+
+# Task metadata
+category: "performance-optimization"
+tags:
+  - "sympy"
+  - "algorithm"
+  - "complexity-reduction"
+  - "partial-ordering"
+  - "performance"
+
+# Baseline performance
+baseline_metrics:
+  correctness: 1.0
+  performance: 0.0
+  combined_score: 0.5
+
+# Achieved performance (evolved solution)
+achieved_metrics:
+  correctness: 1.0
+  performance: 0.9933
+  combined_score: 0.9967
+  speedup_50_symbols: "49,044x"
+  time_50_symbols_ms: 0.0069
+
+# Task-specific configuration
+task_config:
+  max_iterations: 50
+  diff_based_evolution: true  # Evaluator needs full program
+  max_code_length: 50000
+  language: "python"
+
+  # LLM configuration
+  llm_model: "google/gemini-2.5-flash"
+  api_base: "https://openrouter.ai/api/v1"
+
+  # Database configuration
+  population_size: 120
+  archive_size: 25
+  feature_dimensions: ["correctness", "performance"]
+
+# GitHub Issue reference
+github_issue: "https://github.com/sympy/sympy/issues/16249"
+related_pr: "https://github.com/sympy/sympy/pull/27758"
+
+# LLM Judge specific configuration
+llm_judge_config:
+  evaluation_criteria: "Evaluate SymPy Min/Max _find_localzeros optimization for correctness and performance. The evolved code should maintain 100% correctness while achieving significant speedup through algorithmic improvements."
+  scoring_rubric: "Score 0.0-1.0 for correctness (must pass all 5 correctness tests) and performance (target: <0.2s for 50 symbols). Prioritize algorithmic complexity reduction over micro-optimizations."
+  task_context: "SymPy Min/Max _find_localzeros optimization. The original O(n²) algorithm compares every value against all existing localzeros. The goal is to use transitivity and detect antichains (mutually incomparable elements like unrelated Symbols) to reduce complexity to O(n log n) or better."
+  llm_criteria:
+    correctness: 0.5
+    performance: 0.5
+  json_format: '"correctness": <score>, "performance": <score>'

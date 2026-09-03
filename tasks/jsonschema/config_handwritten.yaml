@@ -1,0 +1,85 @@
+# Template for Hand-written Evaluator Configuration
+# This config uses manually crafted evaluator.py files
+
+# General settings
+max_iterations: 50
+checkpoint_interval: 5
+log_level: "INFO"
+random_seed: 42
+
+# Evolution settings
+diff_based_evolution: true
+max_code_length: 50000
+
+# Early stopping configuration
+early_stopping_enabled: true
+early_stopping_patience: 10
+early_stopping_min_iterations: 20
+early_stopping_metric: combined_score
+early_stopping_tolerance: 0.001
+
+# LLM configuration
+llm:
+  models:
+    - name: "google/gemini-2.5-flash"
+      weight: 0.5
+    - name: "qwen/qwen3-coder-flash"
+      weight: 0.5
+
+  island_models:
+    -  # Island 1
+      - name: "google/gemini-2.5-flash"
+        weight: 1.0
+    -  # Island 2
+      - name: "qwen/qwen3-coder-flash"
+        weight: 1.0
+  
+
+  # API configuration
+  api_base: "https://openrouter.ai/api/v1"
+
+  # Generation parameters
+  temperature: 0.6
+  max_tokens: 16000
+
+  # Request parameters
+  timeout: 150
+  retries: 3
+
+# Prompt configuration
+prompt:
+  num_top_programs: 3
+  num_diverse_programs: 2
+  include_artifacts: true
+
+# Database configuration
+database:
+  # Use task-specific feature dimensions for MAP-Elites
+  feature_dimensions: ['correctness', 'performance']
+  feature_bins: 10
+
+  # Population settings
+  population_size: 120
+  archive_size: 25
+  num_islands: 4
+
+  # Selection parameters
+  elite_selection_ratio: 0.0  
+  exploration_ratio: 1.0
+  exploitation_ratio: 0.0
+
+  # Migration parameters
+  migration_interval: 100
+  migration_rate: 0.0
+
+# Evaluator configuration
+evaluator:
+  # General settings
+  timeout: 200
+  max_retries: 3
+
+  # Cascade evaluation for efficiency
+  cascade_evaluation: false
+
+  # Parallel evaluation
+  parallel_evaluations: 4

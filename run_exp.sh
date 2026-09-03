@@ -1,0 +1,1 @@
+eb run --task python-pathfinding --evaluator handwritten --output ./results/python-pathfinding/qwen3-coder-flash --verbose --iteration 50

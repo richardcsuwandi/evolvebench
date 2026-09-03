@@ -1,0 +1,56 @@
+# OS / Editor
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.fseventsd
+.idea/
+.vscode/
+
+# Python cache/venv
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.conda/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+
+# Test & tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Logs
+logs/
+**/logs/
+
+# EvolveBench/OpenEvolve run artifacts
+openevolve_output/
+**/results/
+**/evolved_files/
+**/generated_evaluators/
+**/checkpoints/
+repos/
+tasks/evolvebench_score.json
+tasks/*/best_program*.py
+tasks/*/output.txt
+tasks/*/summary.json
+
+# mkdocs build output
+site/
+
+# Misc
+*.dSYM/
